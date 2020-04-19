@@ -4,4 +4,5 @@
     <string name="titulo">Estatísticas covid-19 na Guarda</string>
     <string name="Button_inserir">Inserir</string>
     <string name="Button_estatisticas">Estatísticas</string>
+    <string name="registation">Registo</string>
 </resources>

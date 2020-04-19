@@ -15,10 +15,12 @@ public class MainActivity extends AppCompatActivity {
     }
     public void inserirDoente (View view){
 
-        Intent intent = new Intent(this,DisplayInserirDoentes.class);
+        Intent intentInserir = new Intent(this,DisplayInserirDoentes.class);
+        startActivity(intentInserir);
     }
     public void verEstatisticas (View view){
 
-        Intent intent2 = new Intent(this,DisplayVerEstatisticas.class);
+        Intent intentEstatistica = new Intent(this,DisplayVerEstatisticas.class);
+        startActivity(intentEstatistica);
     }
 }
