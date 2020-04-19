@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Projeto_Final</string>
+    <string name="titulo">Estatísticas covid-19 na Guarda</string>
+    <string name="Button_inserir">Insert</string>
+    <string name="Button_estatisticas">Estatísticas</string>
+</resources>
