@@ -12,4 +12,5 @@
     <string name="doenteCronico">Chronic sick?</string>
     <string name="sexo">Gender</string>
     <string name="dataEstadoAtual">Current State Date</string>
+    <string name="Button_inserirDoente">Insert</string>
 </resources>

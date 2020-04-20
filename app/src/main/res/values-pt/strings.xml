@@ -13,4 +13,5 @@
     <string name="doenteCronico">Doente cronico?</string>
     <string name="sexo">Gênero</string>
     <string name="dataEstadoAtual">Data do Estado Atual</string>
+    <string name="Button_inserirDoente">Inserir</string>
 </resources>
