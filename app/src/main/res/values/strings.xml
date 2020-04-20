@@ -3,5 +3,13 @@
     <string name="titulo">"Guarda covid-19 stats "</string>
     <string name="Button_estatisticas">Stats</string>
     <string name="Button_inserir">Insert</string>
-    <string name="registation">Registation</string>
+    <string name="registation">Patient record</string>
+    <string name="nome">Name</string>
+    <string name="dataNascimento">Date of Birth</string>
+    <string name="estado">Patient status</string>
+    <string name="concelho">County</string>
+    <string name="telemovel">Phone number</string>
+    <string name="doenteCronico">Chronic sick?</string>
+    <string name="sexo">Gender</string>
+    <string name="dataEstadoAtual">Current State Date</string>
 </resources>
