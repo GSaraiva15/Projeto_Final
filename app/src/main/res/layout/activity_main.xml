@@ -63,4 +63,14 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/distrito_guarda" />
 
+    <Button
+        android:id="@+id/buttonMapa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="verMapa"
+        android:text="@string/ButtonMapa"
+        app:layout_constraintBaseline_toBaselineOf="@+id/buttonInserirDoente"
+        app:layout_constraintEnd_toStartOf="@+id/buttonVerEstatisticas"
+        app:layout_constraintStart_toEndOf="@+id/buttonInserirDoente" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

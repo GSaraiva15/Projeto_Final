@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".mapa"></activity>
+        <activity android:name=".DisplayMapa"></activity>
         <activity android:name=".DisplayVerEstatisticas" />
         <activity android:name=".DisplayInserirDoentes" />
         <activity android:name=".MainActivity">
