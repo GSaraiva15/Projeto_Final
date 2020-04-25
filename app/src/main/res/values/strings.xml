@@ -14,4 +14,19 @@
     <string name="dataEstadoAtual">Current State Date</string>
     <string name="Button_inserirDoente">Insert</string>
     <string name="ButtonMapa">Map</string>
+    <string name="masculino">Male</string>
+    <string name="feminino">Female</string>
+    <string name="aguiarDaBeira" translatable="false">Aguiar da Beira</string>
+    <string name="almeida" translatable="false">Almeida</string>
+    <string name="celoricoDaBeira" translatable="false">Celorico da Beira</string>
+    <string name="figueiraDeCasteloRodrigo" translatable="false">Figueira de Castelo Rodrigo</string>
+    <string name="gouveia" translatable="false">Gouveia</string>
+    <string name="guarda" translatable="false">Guarda</string>
+    <string name="manteigas" translatable="false">Manteigas</string>
+    <string name="meda" translatable="false">Mêda</string>
+    <string name="pinhel" translatable="false">Pinhel</string>
+    <string name="sabugal" translatable="false">Sabugal</string>
+    <string name="seia" translatable="false">Seia</string>
+    <string name="trancoso" translatable="false">Trancoso</string>
+    <string name="vilaNovaDeFozCoa" translatable="false">Vila Nova de Foz Côa</string>
 </resources>

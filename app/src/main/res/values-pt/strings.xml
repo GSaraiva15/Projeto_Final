@@ -15,4 +15,6 @@
     <string name="dataEstadoAtual">Data do Estado Atual</string>
     <string name="Button_inserirDoente">Inserir</string>
     <string name="ButtonMapa">Mapa</string>
+    <string name="masculino">Masculino</string>
+    <string name="feminino">Feminino</string>
 </resources>

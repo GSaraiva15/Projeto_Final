@@ -13,6 +13,6 @@ public class DisplayMapa extends AppCompatActivity {
         setContentView(R.layout.activity_mapa);
         Intent intentMapa = getIntent();
 
-        
+
     }
 }
