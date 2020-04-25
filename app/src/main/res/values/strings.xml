@@ -29,4 +29,9 @@
     <string name="seia" translatable="false">Seia</string>
     <string name="trancoso" translatable="false">Trancoso</string>
     <string name="vilaNovaDeFozCoa" translatable="false">Vila Nova de Foz Côa</string>
+    <string name="sim">Yes</string>
+    <string name="nao">No</string>
+    <string name="recuperado">Recovered</string>
+    <string name="infetado">Infected</string>
+    <string name="falecido">Deceased</string>
 </resources>

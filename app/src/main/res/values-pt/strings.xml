@@ -17,4 +17,9 @@
     <string name="ButtonMapa">Mapa</string>
     <string name="masculino">Masculino</string>
     <string name="feminino">Feminino</string>
+    <string name="sim">Sim</string>
+    <string name="nao">Não</string>
+    <string name="infetado">Infetado</string>
+    <string name="recuperado">Recuperado</string>
+    <string name="falecido">Falecido</string>
 </resources>
