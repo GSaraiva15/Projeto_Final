@@ -34,4 +34,6 @@
     <string name="recuperado">Recovered</string>
     <string name="infetado">Infected</string>
     <string name="falecido">Deceased</string>
+    <string name="NomeObrigatorio">Name is required</string>
+    <string name="CaracteresTelemovelObrigatorio">Phone must be 9 characters</string>
 </resources>

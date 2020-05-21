@@ -22,4 +22,6 @@
     <string name="infetado">Infetado</string>
     <string name="recuperado">Recuperado</string>
     <string name="falecido">Falecido</string>
+    <string name="NomeObrigatorio">Name is required</string>
+    <string name="CaracteresTelemovelObrigatorio">Phone must be 9 characters</string>
 </resources>
