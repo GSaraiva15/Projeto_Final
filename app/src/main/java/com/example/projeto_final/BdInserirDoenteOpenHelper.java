@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 public class BdInserirDoenteOpenHelper extends SQLiteOpenHelper {
-    public static final String NOME_BD_Proj_FINAL = "bdProjetoFinal";
+    public static final String NOME_BD_PROJ_FINAL = "bdProjetoFinal";
     public static final int VERSAO_BASE_DADOS = 1;
     //private static final boolean DESENVOLVIMENTO = true;
 
@@ -20,7 +20,7 @@ public class BdInserirDoenteOpenHelper extends SQLiteOpenHelper {
      *
      */
     public BdInserirDoenteOpenHelper(@Nullable Context context) {
-        super(context, NOME_BD_Proj_FINAL, null, VERSAO_BASE_DADOS);
+        super(context, NOME_BD_PROJ_FINAL, null, VERSAO_BASE_DADOS);
     }
 
     /**

@@ -19,7 +19,7 @@ public class BdTestes {
     }
     @Before
     public void apagaBaseDados() {
-        getTargetContext().deleteDatabase(BdInserirDoenteOpenHelper.NOME_BD_Proj_FINAL);
+        getTargetContext().deleteDatabase(BdInserirDoenteOpenHelper.NOME_BD_PROJ_FINAL);
     }
 
     @Test

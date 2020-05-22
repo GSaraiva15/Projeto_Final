@@ -2,7 +2,7 @@
     <string name="app_name" translatable="false">Projeto_Final</string>
     <string name="titulo">"Guarda covid-19 stats "</string>
     <string name="Button_estatisticas">Stats</string>
-    <string name="Button_inserir">Insert</string>
+    <string name="Button_inserir">Insert data</string>
     <string name="registation">Patient record</string>
     <string name="nome">Name</string>
     <string name="dataNascimento">Date of Birth</string>
@@ -36,4 +36,6 @@
     <string name="falecido">Deceased</string>
     <string name="NomeObrigatorio">Name is required</string>
     <string name="CaracteresTelemovelObrigatorio">Phone must be 9 characters</string>
+    <string name="paciente">Patient</string>
+    <string name="teste">Test</string>
 </resources>

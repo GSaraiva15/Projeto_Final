@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Projeto_Final</string>
     <string name="titulo">Estatísticas covid-19 na Guarda</string>
-    <string name="Button_inserir">Inserir</string>
+    <string name="Button_inserir">Inserir dados</string>
     <string name="Button_estatisticas">Estatísticas</string>
     <string name="registation">Registo do Paciente</string>
     <string name="nome">Nome</string>
@@ -24,4 +24,6 @@
     <string name="falecido">Falecido</string>
     <string name="NomeObrigatorio">Name is required</string>
     <string name="CaracteresTelemovelObrigatorio">Phone must be 9 characters</string>
+    <string name="paciente">Paciente</string>
+    <string name="teste">Testes</string>
 </resources>

@@ -13,10 +13,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-    public void inserirDoente (View view){
+    public void inserirDados (View view){
 
-        Intent intentInserir = new Intent(this,DisplayInserirDoentes.class);
-        startActivity(intentInserir);
+        Intent intentInserirDados = new Intent(this,DisplayInserir.class);
+        startActivity(intentInserirDados);
     }
     public void verEstatisticas (View view){
 
