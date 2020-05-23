@@ -7,7 +7,7 @@ import android.provider.BaseColumns;
 
 public class BdTabelaRegistoDoentes implements BaseColumns {
 
-    public static final String NOME_TABELA_DOENTE = "Noentes";
+    public static final String NOME_TABELA_DOENTE = "Doentes";
     public static final String NOME_DOENTE = "Nome";
     public static final String NASCIMENTO_DOENTE ="Data_Nascimento";
     public static final String TELEMOVEL_DOENTE = "Telemovel_";

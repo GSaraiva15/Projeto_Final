@@ -32,7 +32,7 @@
         app:srcCompat="@drawable/covid_19" />
 
     <Button
-        android:id="@+id/buttonRegistarDoente"
+        android:id="@+id/buttonRegistarTeste"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="inserirDados"
@@ -55,7 +55,7 @@
         android:layout_width="382dp"
         android:layout_height="264dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonRegistarDoente"
+        app:layout_constraintBottom_toTopOf="@+id/buttonRegistarTeste"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,8 +69,8 @@
         android:layout_height="wrap_content"
         android:onClick="verMapa"
         android:text="@string/ButtonMapa"
-        app:layout_constraintBaseline_toBaselineOf="@+id/buttonRegistarDoente"
+        app:layout_constraintBaseline_toBaselineOf="@+id/buttonRegistarTeste"
         app:layout_constraintEnd_toStartOf="@+id/buttonVerEstatisticas"
-        app:layout_constraintStart_toEndOf="@+id/buttonRegistarDoente" />
+        app:layout_constraintStart_toEndOf="@+id/buttonRegistarTeste" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

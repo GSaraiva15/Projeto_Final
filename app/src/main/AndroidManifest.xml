@@ -9,8 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DisplayInserir"></activity>
-        <activity android:name=".DisplayInserirTestes" />
+        <activity android:name=".DisplayInserirTestes"></activity>
+        <activity android:name=".DisplayInserir" />
         <activity android:name=".DisplayMapa" />
         <activity android:name=".DisplayVerEstatisticas" />
         <activity android:name=".DisplayInserirDoentes" />

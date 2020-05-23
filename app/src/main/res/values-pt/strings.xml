@@ -26,4 +26,9 @@
     <string name="CaracteresTelemovelObrigatorio">Phone must be 9 characters</string>
     <string name="paciente">Paciente</string>
     <string name="teste">Testes</string>
+    <string name="DataTeste">Data do Teste</string>
+    <string name="resultadoTeste">Resultado Do Test</string>
+    <string name="resultadoPositivo">Resultado Positivo</string>
+    <string name="ResultadoNegativo">Resultado Negativo</string>
+    <string name="formatoData">Por Favor escreva DD/MM/YYYY</string>
 </resources>
