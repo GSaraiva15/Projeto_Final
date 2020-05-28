@@ -14,7 +14,7 @@ public class BdTabelaRegistoDoentes implements BaseColumns {
     public static final String CONCELHO_DOENTE ="Concelho";
     public static final String SEXO_DOENTE = "Sexo";
     public static final String CRONICO_DOENTE ="Cronico";
-    public static final String ESTADO_PACIENTE ="Estado";
+    public static final String ESTADO_DOENTE ="Estado";
 
 
     private SQLiteDatabase db;
@@ -31,7 +31,7 @@ public class BdTabelaRegistoDoentes implements BaseColumns {
                         CONCELHO_DOENTE + "TEXT NOT NULL,"+
                         SEXO_DOENTE +  "TEXT NOT NULL,"+
                         CRONICO_DOENTE +"TEXT NOT NULL,"+
-                        ESTADO_PACIENTE + "TEXT NOT NULL"+
+                        ESTADO_DOENTE + "TEXT NOT NULL"+
                         ")"
         );
     }
