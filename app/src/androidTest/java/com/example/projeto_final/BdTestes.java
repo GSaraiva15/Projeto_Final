@@ -28,9 +28,9 @@ public class BdTestes {
         Context appContext = getTargetContext();
 
         BdInserirDoenteOpenHelper openHelper = new BdInserirDoenteOpenHelper(appContext);
-        SQLiteDatabase bdLivros = openHelper.getReadableDatabase();
-        assertTrue(bdLivros.isOpen());
-        bdLivros.close();
+        SQLiteDatabase bdProjFinal = openHelper.getReadableDatabase();
+        assertTrue(bdProjFinal.isOpen());
+        bdProjFinal.close();
     }
 
 

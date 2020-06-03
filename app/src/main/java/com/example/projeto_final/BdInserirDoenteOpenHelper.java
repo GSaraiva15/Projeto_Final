@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 public class BdInserirDoenteOpenHelper extends SQLiteOpenHelper {
-    public static final String NOME_BD_PROJ_FINAL = "bdProjetoFinal";
+    public static final String NOME_BD_PROJ_FINAL = "bdProjetoFinal.db";
     public static final int VERSAO_BASE_DADOS = 1;
 
 
@@ -33,6 +33,9 @@ public class BdInserirDoenteOpenHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         BdTabelaRegistoDoentes tabelaRegistoDoentes = new BdTabelaRegistoDoentes(db);
        tabelaRegistoDoentes.criar();
+
+       BdTabelaTestes tabelaTestes = new BdTabelaTestes(db);
+       tabelaTestes.criar();
 
     }
 

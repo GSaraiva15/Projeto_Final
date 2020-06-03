@@ -5,39 +5,38 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
-public class BdTabelaRegistoDoentes implements BaseColumns {
-
-    public static final String NOME_TABELA = "Doentes";
-    public static final String NOME_DOENTE = "Nome";
-    public static final String NASCIMENTO_DOENTE ="Data_Nascimento";
-    public static final String TELEMOVEL_DOENTE = "Telemovel_";
-    public static final String CONCELHO_DOENTE ="Concelho";
-    public static final String SEXO_DOENTE = "Sexo";
-    public static final String CRONICO_DOENTE ="Cronico";
-    public static final String ESTADO_DOENTE ="Estado";
-
-
+public class BdTabelaConcelhos implements BaseColumns {
+    public static String NOME_TABELA = "Concelhos";
+    public static String NOME_CONCELHO = "nome_concelho_";
+    public static String NR_INFETADOS_CONCELHO = "nr_infetados";
+    public static String NR_RECUPERADOS_CONCELHO = "nr_recuperados";
+    public static String NR_OBITOS_CONCELHO = "nr_obitos";
     private SQLiteDatabase db;
-    public BdTabelaRegistoDoentes(SQLiteDatabase db){
-        this.db = db;
-    }
+
+    public BdTabelaConcelhos(SQLiteDatabase db){this.db =db;}
     public void criar(){
         db.execSQL(
-                "CREATE TABLE " + NOME_TABELA +"("+
-                        _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                        NOME_DOENTE + " TEXT NOT NULL,"+
-                        NASCIMENTO_DOENTE + " TEXT NOT NULL,"+
-                        TELEMOVEL_DOENTE + " TEXT NOT NULL,"+
-                        CONCELHO_DOENTE + " TEXT NOT NULL,"+
-                        SEXO_DOENTE +  " TEXT NOT NULL,"+
-                        CRONICO_DOENTE +" TEXT NOT NULL,"+
-                        ESTADO_DOENTE + " TEXT NOT NULL"+
+                "CREATE TABLE " + NOME_TABELA + "(" +
+                        _ID+ " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        NOME_CONCELHO + " TEXT NOT NULL, " +
+                        NR_INFETADOS_CONCELHO + " TEXT NOT NULL," +
+                        NR_RECUPERADOS_CONCELHO +  "TEXT NOT NULL," +
+                        NR_OBITOS_CONCELHO + " TEXT NOT NULL" +
                         ")"
         );
     }
-    public long insert (ContentValues values){
-        return db.insert(NOME_TABELA,null,values);
-    }
+ /**
+ * Convenience method for inserting a row into the database.
+ *
+ *
+ * @param values this map contains the initial column values for the
+ *            row. The keys should be the column names and the values the
+ *            column values
+ * @return the row ID of the newly inserted row, or -1 if an error occurred
+ */
+public long insert ( ContentValues values){
+    return db.insert(NOME_TABELA, null,values);
+}
     /**
      * Query the given table, returning a {@link Cursor} over the result set.
      *
@@ -66,7 +65,9 @@ public class BdTabelaRegistoDoentes implements BaseColumns {
      * {@link Cursor}s are not synchronized, see the documentation for more details.
      * @see Cursor
      */
-    public Cursor query(String[] columns, String selection,String[] selectionArgs,String groupBy,String having, String orderBy){
+    public Cursor query (String[] columns, String selection,
+                         String[] selectionArgs,String groupBy,String having,
+                         String orderBy){
         return db.query(NOME_TABELA,columns,selection,selectionArgs,groupBy,having,orderBy);
     }
     /**

@@ -1,7 +1,7 @@
 package com.example.projeto_final;
 
 public class Doentes {
-    private long id;
+    private long id = -1;
     private String nome_doente;
     private String nascimento_doente;
     private String telemovel_doente;
