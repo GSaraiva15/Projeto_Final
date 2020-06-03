@@ -9,6 +9,7 @@ public class BdTabelaTestes implements BaseColumns {
     public static String NOME_TABELA = "Testes";
     public static String DATA_TESTE = "Data_Teste";
     public static String RESULTADO_TESTE = "resultado_teste";
+    public static final String[] TODOS_CAMPOS_TESTES = {_ID, DATA_TESTE,RESULTADO_TESTE};
     private SQLiteDatabase db;
 
     public BdTabelaTestes(SQLiteDatabase bd){this.db = bd;}
@@ -17,7 +18,7 @@ public class BdTabelaTestes implements BaseColumns {
                 "CREATE TABLE " + NOME_TABELA + "(" +
                 _ID+ " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 DATA_TESTE + " TEXT NOT NULL, " +
-                RESULTADO_TESTE + "TEXT NOT NULL" +
+                RESULTADO_TESTE + " TEXT NOT NULL" +
                 ")"
         );
 

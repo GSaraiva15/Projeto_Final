@@ -5,33 +5,34 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
-public class BdTabelaRegistoDoentes implements BaseColumns {
+public class BdTabelaDoentes implements BaseColumns {
 
     public static final String NOME_TABELA = "Doentes";
     public static final String NOME_DOENTE = "Nome";
     public static final String NASCIMENTO_DOENTE ="Data_Nascimento";
-    public static final String TELEMOVEL_DOENTE = "Telemovel_";
+    public static final String TELEMOVEL_DOENTE = "Telemovel";
     public static final String CONCELHO_DOENTE ="Concelho";
     public static final String SEXO_DOENTE = "Sexo";
     public static final String CRONICO_DOENTE ="Cronico";
     public static final String ESTADO_DOENTE ="Estado";
-
+    public static final String[] TODOS_CAMPOS_DOENTE= {_ID, NOME_DOENTE, NASCIMENTO_DOENTE, TELEMOVEL_DOENTE, CONCELHO_DOENTE, SEXO_DOENTE, CRONICO_DOENTE, ESTADO_DOENTE};
 
     private SQLiteDatabase db;
-    public BdTabelaRegistoDoentes(SQLiteDatabase db){
+
+    public BdTabelaDoentes(SQLiteDatabase db){
         this.db = db;
     }
     public void criar(){
         db.execSQL(
-                "CREATE TABLE " + NOME_TABELA +"("+
+                "CREATE TABLE " + NOME_TABELA + "(" +
                         _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                        NOME_DOENTE + " TEXT NOT NULL,"+
-                        NASCIMENTO_DOENTE + " TEXT NOT NULL,"+
-                        TELEMOVEL_DOENTE + " TEXT NOT NULL,"+
-                        CONCELHO_DOENTE + " TEXT NOT NULL,"+
-                        SEXO_DOENTE +  " TEXT NOT NULL,"+
-                        CRONICO_DOENTE +" TEXT NOT NULL,"+
-                        ESTADO_DOENTE + " TEXT NOT NULL"+
+                        NOME_DOENTE + " TEXT NOT NULL," +
+                        NASCIMENTO_DOENTE + " TEXT NOT NULL," +
+                        TELEMOVEL_DOENTE + " TEXT NOT NULL," +
+                        CONCELHO_DOENTE + " TEXT NOT NULL," +
+                        SEXO_DOENTE +  " TEXT NOT NULL," +
+                        CRONICO_DOENTE +" TEXT NOT NULL," +
+                        ESTADO_DOENTE + " TEXT NOT NULL" +
                         ")"
         );
     }

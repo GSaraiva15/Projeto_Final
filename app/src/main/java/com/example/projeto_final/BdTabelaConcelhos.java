@@ -11,6 +11,7 @@ public class BdTabelaConcelhos implements BaseColumns {
     public static String NR_INFETADOS_CONCELHO = "nr_infetados";
     public static String NR_RECUPERADOS_CONCELHO = "nr_recuperados";
     public static String NR_OBITOS_CONCELHO = "nr_obitos";
+    public static final String[] TODOS_CAMPOS_CONCELHO = {_ID, NOME_CONCELHO,NR_INFETADOS_CONCELHO,NR_RECUPERADOS_CONCELHO,NR_OBITOS_CONCELHO};
     private SQLiteDatabase db;
 
     public BdTabelaConcelhos(SQLiteDatabase db){this.db =db;}
@@ -20,7 +21,7 @@ public class BdTabelaConcelhos implements BaseColumns {
                         _ID+ " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         NOME_CONCELHO + " TEXT NOT NULL, " +
                         NR_INFETADOS_CONCELHO + " TEXT NOT NULL," +
-                        NR_RECUPERADOS_CONCELHO +  "TEXT NOT NULL," +
+                        NR_RECUPERADOS_CONCELHO +  " TEXT NOT NULL," +
                         NR_OBITOS_CONCELHO + " TEXT NOT NULL" +
                         ")"
         );
