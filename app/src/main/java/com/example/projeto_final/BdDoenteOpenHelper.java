@@ -37,6 +37,9 @@ public class BdDoenteOpenHelper extends SQLiteOpenHelper {
        BdTabelaTestes tabelaTestes = new BdTabelaTestes(db);
        tabelaTestes.criar();
 
+       BdTabelaConcelhos tabelaConcelhos = new BdTabelaConcelhos(db);
+       tabelaConcelhos.criar();
+
     }
 
     /**

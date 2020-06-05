@@ -115,4 +115,21 @@ public class BdTestes {
     bdDoentes.close();
 
     }
+    @Test
+    public void consegueLerDoente(){
+        Context appContext = getTargetContext();
+
+        BdDoenteOpenHelper openHelper = new BdDoenteOpenHelper(appContext);
+        SQLiteDatabase bdDoentes = openHelper.getWritableDatabase();
+        BdTabelaDoentes tabelaDoentes = new BdTabelaDoentes(bdDoentes);
+
+        Cursor cursor = tabelaDoentes.query(BdTabelaDoentes.TODOS_CAMPOS_DOENTE,null, null, null, null, null);
+        int registos = cursor.getCount();
+        cursor.close();
+        insereDoente(tabelaDoentes,"Gonçalo","15/02/2000","987654321","Seia","Masculino","Não,","Recuperado");
+        cursor = tabelaDoentes.query(BdTabelaDoentes.TODOS_CAMPOS_DOENTE,null, null, null, null, null );
+        assertEquals(registos+1, cursor.getCount());
+        cursor.close();
+        bdDoentes.close();
+    }
 }
