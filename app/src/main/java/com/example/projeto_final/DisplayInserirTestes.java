@@ -1,5 +1,6 @@
 package com.example.projeto_final;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -49,13 +51,21 @@ public class DisplayInserirTestes extends AppCompatActivity {
 
         EditText textInputEditTextNome = (EditText) findViewById(R.id.textInputEditTextNome);
         String nome = textInputEditTextNome.getText().toString();
-        EditText TextInputEditDataTeste= (EditText) findViewById(R.id.textInputEditTextDataTeste);
 
         if (nome.length() == 0){
             textInputEditTextNome.setError(getString(R.string.NomeObrigatorio));
             textInputEditTextNome.requestFocus();
             return;
         }
+        CalendarView calendarViewDataTeste = (CalendarView) findViewById(R.id.calendarViewDataTeste);
+
+        calendarViewDataTeste.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+
+            }
+        });
+/*
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
         Date data =null;
@@ -68,7 +78,7 @@ public class DisplayInserirTestes extends AppCompatActivity {
             TextInputEditDataTeste.setError(getString(R.string.formatoData));
             TextInputEditDataTeste.requestFocus();
             return;
-        }
+        }*/
     }
 }
 

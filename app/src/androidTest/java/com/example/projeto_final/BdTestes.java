@@ -132,4 +132,40 @@ public class BdTestes {
         cursor.close();
         bdDoentes.close();
     }
+    /*private long insereTeste(SQLiteDatabase bdTestes,String dataTestes,String resultado_testes) {
+        BdTabelaTestes tabelaTestes = new BdTabelaTestes(bdTestes);
+
+        long idTeste = insereTeste(tabelaTestes, dataTestes, resultado_testes);
+
+        Testes testes = new Testes();
+        testes.setData_testes("08/06/2020");
+        testes.setResultado_testes("Infetado");
+
+        BdTabelaTestes tabelaLivros = new BdTabelaTestes(bdTestes);
+        long id = tabelaTestes.insert(Converte.contentValuesToTestes(testes));
+        assertNotEquals(-1, id);
+
+        return  id;
+    }
+    @Test
+    public void consegueInserirTeste(){
+        Context appContext = getTargetContext();
+        BdDoenteOpenHelper openHelper = new BdDoenteOpenHelper(appContext);
+        SQLiteDatabase bdTestes = openHelper.getWritableDatabase();
+
+    }
+    @Test
+    public void conseguelerTeste(){
+        Context appContext = getTargetContext();
+
+        BdDoenteOpenHelper openHelper = new BdDoenteOpenHelper(appContext);
+        SQLiteDatabase bdTestes = openHelper.getWritableDatabase();
+        BdTabelaTestes tabelaTestes = new BdTabelaTestes(bdTestes);
+
+        Cursor cursor = tabelaTestes.query(BdTabelaTestes.TODOS_CAMPOS_TESTES,null, null, null, null, null);
+        int registos = cursor.getCount();
+        cursor.close();
+
+        consegueInserirTeste();
+    }*/
 }

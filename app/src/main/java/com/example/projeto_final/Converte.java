@@ -27,7 +27,7 @@ public class Converte {
         doentes.setEstado_doente(valores.getAsString(BdTabelaDoentes.ESTADO_DOENTE));
         return doentes;
     }
-    public static Doentes cursorToPaciente(Cursor cursor){
+    public static Doentes cursorToDoente(Cursor cursor){
         Doentes doentes = new Doentes();
         doentes.setId(cursor.getLong(cursor.getColumnIndex(BdTabelaDoentes._ID)));
         doentes.setNome_doente(cursor.getString(cursor.getColumnIndex(BdTabelaDoentes.NOME_DOENTE)));
@@ -38,5 +38,25 @@ public class Converte {
         doentes.setCronico_doente(cursor.getString(cursor.getColumnIndex(BdTabelaDoentes.CRONICO_DOENTE)));
         doentes.setEstado_doente(cursor.getString(cursor.getColumnIndex(BdTabelaDoentes.ESTADO_DOENTE)));
         return doentes;
+    }
+    public static ContentValues testesToContentValues(Testes testes){
+        ContentValues valores = new ContentValues();
+        valores.put(BdTabelaTestes.DATA_TESTE, testes.getData_testes());
+        valores.put(BdTabelaTestes.RESULTADO_TESTE, testes.getResultado_testes());
+        return valores;
+    }
+    public static Testes contentValuesToTestes(ContentValues valores){
+        Testes testes = new Testes();
+        testes.setId(valores.getAsLong(BdTabelaTestes._ID));
+        testes.setData_testes(valores.getAsString(BdTabelaTestes.DATA_TESTE));
+        testes.setResultado_testes(valores.getAsString(BdTabelaTestes.RESULTADO_TESTE));
+        return testes;
+    }
+    public static Testes cursorToTestes(Cursor cursor){
+        Testes testes = new Testes();
+        testes.setId(cursor.getLong(cursor.getColumnIndex(BdTabelaTestes._ID)));
+        testes.setData_testes(cursor.getString(cursor.getColumnIndex(BdTabelaTestes.DATA_TESTE)));
+        testes.setResultado_testes(cursor.getString(cursor.getColumnIndex(BdTabelaTestes.RESULTADO_TESTE)));
+        return testes;
     }
 }
