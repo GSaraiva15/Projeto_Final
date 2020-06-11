@@ -57,12 +57,13 @@ public class DisplayInserirTestes extends AppCompatActivity {
             textInputEditTextNome.requestFocus();
             return;
         }
+        //https://www.youtube.com/watch?v=j_-dmsRWL3g&fbclid=IwAR1jo1CXntOg7lLi6Il8j4oXwdGhsuA0LsYGOX92UWWs6zcGV_cYH_BQNyg
         CalendarView calendarViewDataTeste = (CalendarView) findViewById(R.id.calendarViewDataTeste);
 
         calendarViewDataTeste.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-
+                String dateTeste = dayOfMonth + "/" + month + "/" + year;
             }
         });
 /*
