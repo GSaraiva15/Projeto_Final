@@ -132,16 +132,16 @@ public class BdTestes {
         cursor.close();
         bdDoentes.close();
     }
-    /*private long insereTeste(SQLiteDatabase bdTestes,String dataTestes,String resultado_testes) {
-        BdTabelaTestes tabelaTestes = new BdTabelaTestes(bdTestes);
+    private long insereTeste(SQLiteDatabase bdTestes,String dataTestes,String resultado_testes) {
+        BdTabelaDoentes tabelaDoentes = new BdTabelaDoentes(bdTestes);
 
-        long idTeste = insereTeste(tabelaTestes, dataTestes, resultado_testes);
+        long idTeste = insereDoente(tabelaDoentes, dataTestes, resultado_testes);
 
         Testes testes = new Testes();
-        testes.setData_testes("08/06/2020");
+        testes.setData_testes("13/06/2020");
         testes.setResultado_testes("Infetado");
 
-        BdTabelaTestes tabelaLivros = new BdTabelaTestes(bdTestes);
+        BdTabelaTestes tabelaTestes = new BdTabelaTestes(bdTestes);
         long id = tabelaTestes.insert(Converte.contentValuesToTestes(testes));
         assertNotEquals(-1, id);
 
@@ -152,7 +152,9 @@ public class BdTestes {
         Context appContext = getTargetContext();
         BdDoenteOpenHelper openHelper = new BdDoenteOpenHelper(appContext);
         SQLiteDatabase bdTestes = openHelper.getWritableDatabase();
+        insereTeste(bdTestes,"13/06/2020","Infetado");
 
+        bdTestes.close();
     }
     @Test
     public void conseguelerTeste(){
@@ -166,6 +168,53 @@ public class BdTestes {
         int registos = cursor.getCount();
         cursor.close();
 
-        consegueInserirTeste();
-    }*/
+        insereTeste(bdTestes,"13/06/2020","Infetado");
+        cursor = tabelaTestes.query(BdTabelaTestes.TODOS_CAMPOS_TESTES, null, null, null, null, null);
+        assertEquals(registos +1, cursor.getCount());
+        cursor.close();
+
+        bdTestes.close();
+    }
+    @Test
+    public  void consegueAlterarTeste(){
+        Context appContext = getTargetContext();
+
+        BdDoenteOpenHelper openHelper = new BdDoenteOpenHelper(appContext);
+        SQLiteDatabase bdTestes = openHelper.getWritableDatabase();
+
+        long idTestes = insereTeste(bdTestes,"13/06/2020","Infetado");
+
+        BdTabelaTestes tabelaTestes = new BdTabelaTestes(bdTestes);
+
+        Cursor cursor = tabelaTestes.query(BdTabelaTestes.TODOS_CAMPOS_TESTES, BdTabelaTestes.CAMPO_ID_COMPLETO + "=?",new String[]{ String.valueOf(idTestes) }, null, null, null);
+        assertEquals(1,cursor.getCount());
+
+        assertTrue(cursor.moveToNext());
+        Testes testes = Converte.cursorToTestes(cursor);
+
+        assertEquals("13/06/2020",testes.getData_testes());
+        assertEquals("Infetado", testes.getResultado_testes());
+        testes.setData_testes("14/06/2020");
+        testes.setResultado_testes("Recuperado");
+
+        int registosAfetados = tabelaTestes.update(Converte.testesToContentValues(testes),BdTabelaTestes.CAMPO_ID_COMPLETO + "=?",new String[]{String.valueOf(testes.getId())});
+        assertEquals(1, registosAfetados);
+
+        bdTestes.close();
+    }
+    @Test
+    public void consegueEliminarTestes(){
+        Context appContext = getTargetContext();
+
+        BdDoenteOpenHelper openHelper = new BdDoenteOpenHelper(appContext);
+        SQLiteDatabase bdTestes = openHelper.getWritableDatabase();
+
+        long id = insereTeste(bdTestes,"13/06/2020","Infetado");
+
+        BdTabelaTestes tabelaTestes = new BdTabelaTestes(bdTestes);
+        int registosEliminados = tabelaTestes.delete(BdTabelaTestes._ID + "=?",new String[]{String.valueOf(id)});
+        assertEquals(1,registosEliminados);
+
+        bdTestes.close();
+    }
 }
