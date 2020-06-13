@@ -66,20 +66,7 @@ public class DisplayInserirTestes extends AppCompatActivity {
                 String dateTeste = dayOfMonth + "/" + month + "/" + year;
             }
         });
-/*
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
-        Date data =null;
-        String dataTexto = new String(TextInputEditDataTeste.getText().toString());
-
-        try {
-            format.setLenient(false);
-            data = format.parse(dataTexto);
-        } catch (ParseException e) {
-            TextInputEditDataTeste.setError(getString(R.string.formatoData));
-            TextInputEditDataTeste.requestFocus();
-            return;
-        }*/
     }
 }
 

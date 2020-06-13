@@ -9,7 +9,16 @@ public class BdTabelaTestes implements BaseColumns {
     public static String NOME_TABELA = "Testes";
     public static String DATA_TESTE = "Data_Teste";
     public static String RESULTADO_TESTE = "resultado_teste";
-    public static final String[] TODOS_CAMPOS_TESTES = {_ID, DATA_TESTE,RESULTADO_TESTE};
+    public static String CAMPO_ID_DOENTE ="id_doente";
+
+    public static final String CAMPO_ID_COMPLETO = NOME_TABELA + "." + _ID;
+    public static final String DATA_TESTE_COMPLETO = NOME_TABELA + "." + DATA_TESTE;
+    public static final String RESULTADO_TESTE_COMPLETO = NOME_TABELA + "." + RESULTADO_TESTE;
+    public static String CAMPO_ID_DOENTE_COMPLETO = NOME_TABELA + "." + CAMPO_ID_DOENTE;
+
+    public static final String CAMPO_ID_DOENTE_COMMPLETO = BdTabelaDoentes.CAMPO_ID_COMPLETO + " AS " + CAMPO_ID_DOENTE;
+
+    public static final String[] TODOS_CAMPOS_TESTES = {CAMPO_ID_COMPLETO, DATA_TESTE_COMPLETO,RESULTADO_TESTE_COMPLETO};
     private SQLiteDatabase db;
 
     public BdTabelaTestes(SQLiteDatabase bd){this.db = bd;}
@@ -18,9 +27,10 @@ public class BdTabelaTestes implements BaseColumns {
                 "CREATE TABLE " + NOME_TABELA + "(" +
                 _ID+ " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 DATA_TESTE + " TEXT NOT NULL, " +
-                RESULTADO_TESTE + " TEXT NOT NULL" +
-                ")"
-        );
+                RESULTADO_TESTE + " TEXT NOT NULL, " +
+                " FOREIGN KEY (" +  CAMPO_ID_DOENTE + ") REFERENCES " +
+                BdTabelaTestes.NOME_TABELA + "(" + BdTabelaTestes._ID+ ")"+
+                ")");
 
     }     /**
      * Convenience method for inserting a row into the database.

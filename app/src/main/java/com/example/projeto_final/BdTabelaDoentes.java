@@ -15,7 +15,19 @@ public class BdTabelaDoentes implements BaseColumns {
     public static final String SEXO_DOENTE = "Sexo";
     public static final String CRONICO_DOENTE ="Cronico";
     public static final String ESTADO_DOENTE ="Estado";
-    public static final String[] TODOS_CAMPOS_DOENTE= {_ID, NOME_DOENTE, NASCIMENTO_DOENTE, TELEMOVEL_DOENTE, CONCELHO_DOENTE, SEXO_DOENTE, CRONICO_DOENTE, ESTADO_DOENTE};
+    public static final String CAMPO_ID_CONCELHO = "id_concelho";
+
+    public static final String CAMPO_ID_COMPLETO = NOME_TABELA + "." + _ID;
+    public static final String NOME_DOENTE_COMPLETO = NOME_TABELA + "." + NOME_DOENTE;
+    public static final String NASCIMENTO_DOENTE_COMPLETO = NOME_TABELA + "." + NASCIMENTO_DOENTE;
+    public static final String TELEMOVEL_DOENTE_COMPLETO = NOME_TABELA + "." + TELEMOVEL_DOENTE;
+    public static final String CONCELHO_DOENTE_COMPLETO = NOME_TABELA + "." + CONCELHO_DOENTE;
+    public static final String SEXO_DOENTE_COMPLETO = NOME_TABELA + "." + SEXO_DOENTE;
+    public static final String CRONICO_DOENTE_COMPLETO  = NOME_TABELA + "." + CRONICO_DOENTE;
+    public static final String ESTADO_DOENTE_COMPLETO = NOME_TABELA + "." + ESTADO_DOENTE;
+    public static final String CAMPO_ID_CONCELHO_COMPLETO = BdTabelaConcelhos.CAMPO_ID_COMPLETO + " AS " + CAMPO_ID_CONCELHO;
+
+    public static final String[] TODOS_CAMPOS_DOENTE= {CAMPO_ID_COMPLETO, NOME_DOENTE_COMPLETO, NASCIMENTO_DOENTE_COMPLETO, TELEMOVEL_DOENTE_COMPLETO, CONCELHO_DOENTE_COMPLETO, SEXO_DOENTE_COMPLETO, CRONICO_DOENTE_COMPLETO, ESTADO_DOENTE_COMPLETO};
 
     private SQLiteDatabase db;
 
@@ -32,9 +44,10 @@ public class BdTabelaDoentes implements BaseColumns {
                         CONCELHO_DOENTE + " TEXT NOT NULL," +
                         SEXO_DOENTE +  " TEXT NOT NULL," +
                         CRONICO_DOENTE +" TEXT NOT NULL," +
-                        ESTADO_DOENTE + " TEXT NOT NULL" +
-                        ")"
-        );
+                        ESTADO_DOENTE + " TEXT NOT NULL," +
+                        "FOREIGN KEY (" + CAMPO_ID_CONCELHO + ") REFERENCES " +
+                        BdTabelaConcelhos.NOME_TABELA + "(" + BdTabelaConcelhos._ID +")"+
+                        ")");
     }
     public long insert (ContentValues values){
         return db.insert(NOME_TABELA,null,values);
