@@ -53,6 +53,7 @@ public class BdTestes {
         doentes.setCronico_doente(Cronico);
         doentes.setEstado_doente(Estado);
 
+
         return insereDoente(tabelaDoentes,doentes);
     }
     @Test
@@ -131,7 +132,7 @@ public class BdTestes {
         assertEquals(registos+1, cursor.getCount());
         cursor.close();
         bdDoentes.close();
-    }
+    }/*
     private long insereTeste(SQLiteDatabase bdTestes,String dataTestes,String resultado_testes) {
         BdTabelaDoentes tabelaDoentes = new BdTabelaDoentes(bdTestes);
 
@@ -216,5 +217,5 @@ public class BdTestes {
         assertEquals(1,registosEliminados);
 
         bdTestes.close();
-    }
+    }*/
 }

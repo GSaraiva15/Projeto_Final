@@ -28,8 +28,9 @@ public class BdTabelaTestes implements BaseColumns {
                 _ID+ " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 DATA_TESTE + " TEXT NOT NULL, " +
                 RESULTADO_TESTE + " TEXT NOT NULL, " +
+                        CAMPO_ID_DOENTE + " TEXT NOT NULL," +
                 " FOREIGN KEY (" +  CAMPO_ID_DOENTE + ") REFERENCES " +
-                BdTabelaTestes.NOME_TABELA + "(" + BdTabelaTestes._ID+ ")"+
+                BdTabelaDoentes.NOME_TABELA + "(" + BdTabelaDoentes._ID+ ")"+
                 ")");
 
     }     /**

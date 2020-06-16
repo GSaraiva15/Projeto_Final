@@ -45,6 +45,7 @@ public class BdTabelaDoentes implements BaseColumns {
                         SEXO_DOENTE +  " TEXT NOT NULL," +
                         CRONICO_DOENTE +" TEXT NOT NULL," +
                         ESTADO_DOENTE + " TEXT NOT NULL," +
+                        CAMPO_ID_CONCELHO + " INTEGER NOT NULL,"+
                         "FOREIGN KEY (" + CAMPO_ID_CONCELHO + ") REFERENCES " +
                         BdTabelaConcelhos.NOME_TABELA + "(" + BdTabelaConcelhos._ID +")"+
                         ")");
