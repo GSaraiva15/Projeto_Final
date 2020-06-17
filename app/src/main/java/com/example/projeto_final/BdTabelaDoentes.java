@@ -35,8 +35,7 @@ public class BdTabelaDoentes implements BaseColumns {
         this.db = db;
     }
     public void criar(){
-        db.execSQL(
-                "CREATE TABLE " + NOME_TABELA + "(" +
+        db.execSQL("CREATE TABLE " + NOME_TABELA + "(" +
                         _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                         NOME_DOENTE + " TEXT NOT NULL," +
                         NASCIMENTO_DOENTE + " TEXT NOT NULL," +
@@ -45,8 +44,7 @@ public class BdTabelaDoentes implements BaseColumns {
                         SEXO_DOENTE +  " TEXT NOT NULL," +
                         CRONICO_DOENTE +" TEXT NOT NULL," +
                         ESTADO_DOENTE + " TEXT NOT NULL," +
-                        CAMPO_ID_CONCELHO + " INTEGER NOT NULL,"+
-                        "FOREIGN KEY (" + CAMPO_ID_CONCELHO + ") REFERENCES " +
+                        "FOREIGN KEY (" + CONCELHO_DOENTE + ") REFERENCES " +
                         BdTabelaConcelhos.NOME_TABELA + "(" + BdTabelaConcelhos._ID +")"+
                         ")");
     }

@@ -25,8 +25,7 @@ public class BdTabelaConcelhos implements BaseColumns {
 
     public BdTabelaConcelhos(SQLiteDatabase db){this.db =db;}
     public void criar(){
-        db.execSQL(
-                "CREATE TABLE " + NOME_TABELA + "(" +
+        db.execSQL("CREATE TABLE " + NOME_TABELA + "(" +
                         _ID+ " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         NOME_CONCELHO + " TEXT NOT NULL, " +
                         NR_INFETADOS_CONCELHO + " TEXT NOT NULL," +

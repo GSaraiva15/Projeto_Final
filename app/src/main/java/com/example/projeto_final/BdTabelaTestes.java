@@ -23,8 +23,7 @@ public class BdTabelaTestes implements BaseColumns {
 
     public BdTabelaTestes(SQLiteDatabase bd){this.db = bd;}
     public void criar(){
-        db.execSQL(
-                "CREATE TABLE " + NOME_TABELA + "(" +
+        db.execSQL("CREATE TABLE " + NOME_TABELA + "(" +
                 _ID+ " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 DATA_TESTE + " TEXT NOT NULL, " +
                 RESULTADO_TESTE + " TEXT NOT NULL, " +

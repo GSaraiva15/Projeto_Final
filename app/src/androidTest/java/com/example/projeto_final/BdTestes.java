@@ -136,11 +136,12 @@ public class BdTestes {
     private long insereTeste(SQLiteDatabase bdTestes,String dataTestes,String resultado_testes) {
         BdTabelaDoentes tabelaDoentes = new BdTabelaDoentes(bdTestes);
 
-        long idTeste = insereDoente(tabelaDoentes, dataTestes, resultado_testes);
+        long idTeste = insereDoente(tabelaDoentes,"Valter","15/02/2000","987654321","Seia","Masculino","Não,","Recuperado");
 
         Testes testes = new Testes();
         testes.setData_testes("13/06/2020");
         testes.setResultado_testes("Infetado");
+        testes.setIdTeste(idTeste);
 
         BdTabelaTestes tabelaTestes = new BdTabelaTestes(bdTestes);
         long id = tabelaTestes.insert(Converte.contentValuesToTestes(testes));
