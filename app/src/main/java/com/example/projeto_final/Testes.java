@@ -4,6 +4,15 @@ public class Testes {
     private long id = -1;
     private String data_testes;
     private String resultado_testes;
+    private long idDoente = -1;
+
+    public long getIdDoente() {
+        return idDoente;
+    }
+
+    public void setIdDoente(long idDoente) {
+        this.idDoente = idDoente;
+    }
 
     public long getId() {
         return id;

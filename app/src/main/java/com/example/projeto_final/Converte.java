@@ -43,6 +43,7 @@ public class Converte {
         ContentValues valores = new ContentValues();
         valores.put(BdTabelaTestes.DATA_TESTE, testes.getData_testes());
         valores.put(BdTabelaTestes.RESULTADO_TESTE, testes.getResultado_testes());
+        valores.put(BdTabelaTestes.CAMPO_ID_DOENTE, testes.getIdDoente());
         return valores;
     }
     public static Testes contentValuesToTestes(ContentValues valores){
@@ -50,6 +51,7 @@ public class Converte {
         testes.setId(valores.getAsLong(BdTabelaTestes._ID));
         testes.setData_testes(valores.getAsString(BdTabelaTestes.DATA_TESTE));
         testes.setResultado_testes(valores.getAsString(BdTabelaTestes.RESULTADO_TESTE));
+        testes.setIdDoente(valores.getAsLong(BdTabelaTestes.CAMPO_ID_DOENTE));
         return testes;
     }
     public static Testes cursorToTestes(Cursor cursor){
@@ -57,6 +59,7 @@ public class Converte {
         testes.setId(cursor.getLong(cursor.getColumnIndex(BdTabelaTestes._ID)));
         testes.setData_testes(cursor.getString(cursor.getColumnIndex(BdTabelaTestes.DATA_TESTE)));
         testes.setResultado_testes(cursor.getString(cursor.getColumnIndex(BdTabelaTestes.RESULTADO_TESTE)));
+        testes.setIdDoente(cursor.getLong(cursor.getColumnIndex(BdTabelaTestes.CAMPO_ID_DOENTE)));
         return testes;
     }
 }

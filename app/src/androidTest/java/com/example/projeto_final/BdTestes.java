@@ -132,19 +132,19 @@ public class BdTestes {
         assertEquals(registos+1, cursor.getCount());
         cursor.close();
         bdDoentes.close();
-    }/*
-    private long insereTeste(SQLiteDatabase bdTestes,String dataTestes,String resultado_testes) {
+    }
+    private long insereTeste(SQLiteDatabase bdTestes,String dataTestes, String Resultado_teste) {
         BdTabelaDoentes tabelaDoentes = new BdTabelaDoentes(bdTestes);
 
-        long idTeste = insereDoente(tabelaDoentes,"Valter","15/02/2000","987654321","Seia","Masculino","Não,","Recuperado");
+        long idTeste = insereDoente(tabelaDoentes,"Gonçalo","15/02/2000","987654321","Seia","Masculino","Não,","Recuperado");
 
         Testes testes = new Testes();
-        testes.setData_testes("13/06/2020");
-        testes.setResultado_testes("Infetado");
-        testes.setIdTeste(idTeste);
+        testes.setData_testes(dataTestes);
+        testes.setResultado_testes(Resultado_teste);
+        testes.setId(idTeste);
 
         BdTabelaTestes tabelaTestes = new BdTabelaTestes(bdTestes);
-        long id = tabelaTestes.insert(Converte.contentValuesToTestes(testes));
+        long id = tabelaTestes.insert(Converte.testesToContentValues(testes));
         assertNotEquals(-1, id);
 
         return  id;
@@ -193,11 +193,12 @@ public class BdTestes {
 
         assertTrue(cursor.moveToNext());
         Testes testes = Converte.cursorToTestes(cursor);
+        cursor.close();
 
         assertEquals("13/06/2020",testes.getData_testes());
-        assertEquals("Infetado", testes.getResultado_testes());
+
         testes.setData_testes("14/06/2020");
-        testes.setResultado_testes("Recuperado");
+
 
         int registosAfetados = tabelaTestes.update(Converte.testesToContentValues(testes),BdTabelaTestes.CAMPO_ID_COMPLETO + "=?",new String[]{String.valueOf(testes.getId())});
         assertEquals(1, registosAfetados);
@@ -218,5 +219,5 @@ public class BdTestes {
         assertEquals(1,registosEliminados);
 
         bdTestes.close();
-    }*/
+    }
 }
