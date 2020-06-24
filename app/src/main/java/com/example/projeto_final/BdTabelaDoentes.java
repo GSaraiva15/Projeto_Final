@@ -25,9 +25,9 @@ public class BdTabelaDoentes implements BaseColumns {
     public static final String SEXO_DOENTE_COMPLETO = NOME_TABELA + "." + SEXO_DOENTE;
     public static final String CRONICO_DOENTE_COMPLETO  = NOME_TABELA + "." + CRONICO_DOENTE;
     public static final String ESTADO_DOENTE_COMPLETO = NOME_TABELA + "." + ESTADO_DOENTE;
-    public static final String CAMPO_ID_CONCELHO_COMPLETO = BdTabelaConcelhos.CAMPO_ID_COMPLETO + " AS " + CAMPO_ID_CONCELHO;
+    public static final String CAMPO_ID_CONCELHO_COMPLETO = BdTabelaConcelhos.CAMPO_ID_COMPLETO + " AS " + CONCELHO_DOENTE;
 
-    public static final String[] TODOS_CAMPOS_DOENTE= {CAMPO_ID_COMPLETO, NOME_DOENTE_COMPLETO, NASCIMENTO_DOENTE_COMPLETO, TELEMOVEL_DOENTE_COMPLETO, CONCELHO_DOENTE_COMPLETO, SEXO_DOENTE_COMPLETO, CRONICO_DOENTE_COMPLETO, ESTADO_DOENTE_COMPLETO};
+    public static final String[] TODOS_CAMPOS_DOENTE= {CAMPO_ID_COMPLETO, NOME_DOENTE_COMPLETO, NASCIMENTO_DOENTE_COMPLETO, TELEMOVEL_DOENTE_COMPLETO, CONCELHO_DOENTE_COMPLETO, SEXO_DOENTE_COMPLETO, CRONICO_DOENTE_COMPLETO, ESTADO_DOENTE_COMPLETO/*,CAMPO_ID_CONCELHO_COMPLETO*/};
 
     private SQLiteDatabase db;
 
@@ -40,11 +40,11 @@ public class BdTabelaDoentes implements BaseColumns {
                         NOME_DOENTE + " TEXT NOT NULL," +
                         NASCIMENTO_DOENTE + " TEXT NOT NULL," +
                         TELEMOVEL_DOENTE + " TEXT NOT NULL," +
-                        CONCELHO_DOENTE + " TEXT NOT NULL," +
                         SEXO_DOENTE +  " TEXT NOT NULL," +
                         CRONICO_DOENTE +" TEXT NOT NULL," +
                         ESTADO_DOENTE + " TEXT NOT NULL," +
-                        "FOREIGN KEY (" + CONCELHO_DOENTE + ") REFERENCES " +
+                        CAMPO_ID_CONCELHO + " INTEGER NOT NULL," + //CAMPO_ID_CONCELHO
+                        "FOREIGN KEY (" + CAMPO_ID_CONCELHO + ") REFERENCES " +
                         BdTabelaConcelhos.NOME_TABELA + "(" + BdTabelaConcelhos._ID +")"+
                         ")");
     }

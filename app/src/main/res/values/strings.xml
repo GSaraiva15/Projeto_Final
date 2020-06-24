@@ -43,4 +43,5 @@
     <string name="resultadoPositivo">Positive Result</string>
     <string name="ResultadoNegativo">Negative Result</string>
     <string name="formatoData">Please Write DD/MM/YYYY</string>
+    <string name="fornosdealgodres" translatable="false">Fornos de Algodres</string>
 </resources>

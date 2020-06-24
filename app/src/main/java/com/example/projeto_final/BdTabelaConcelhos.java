@@ -11,12 +11,14 @@ public class BdTabelaConcelhos implements BaseColumns {
     public static String NR_INFETADOS_CONCELHO = "nr_infetados";
     public static String NR_RECUPERADOS_CONCELHO = "nr_recuperados";
     public static String NR_OBITOS_CONCELHO = "nr_obitos";
+    public static String NR_HABITANTES_CONCELHO = "nr_habitantes";
 
     public static String CAMPO_ID_COMPLETO = NOME_TABELA + "." + _ID;
     public static String NOME_CONCELHO_COMPLETO = NOME_TABELA + "." + NOME_CONCELHO;
     public static String NR_INFETADOS_CONCELHO_COMPLETO = NOME_TABELA + "." + NR_INFETADOS_CONCELHO;
     public static String NR_RECUPERADOS_CONCELHO_COMPLETO = NOME_TABELA + "." + NR_RECUPERADOS_CONCELHO;
     public static String NR_OBITOS_CONCELHO_COMPLETO = NOME_TABELA + "." + NR_OBITOS_CONCELHO;
+    public static String NR_HABITANTES_COMPLETO = NOME_TABELA + "." + NR_HABITANTES_CONCELHO;
 
 
 
@@ -30,7 +32,8 @@ public class BdTabelaConcelhos implements BaseColumns {
                         NOME_CONCELHO + " TEXT NOT NULL, " +
                         NR_INFETADOS_CONCELHO + " TEXT NOT NULL," +
                         NR_RECUPERADOS_CONCELHO +  " TEXT NOT NULL," +
-                        NR_OBITOS_CONCELHO + " TEXT NOT NULL" +
+                        NR_OBITOS_CONCELHO + " TEXT NOT NULL," +
+                NR_HABITANTES_CONCELHO + "INTEGER NOT NULL " +
                         ")"
         );
     }

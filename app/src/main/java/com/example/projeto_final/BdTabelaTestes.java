@@ -18,7 +18,7 @@ public class BdTabelaTestes implements BaseColumns {
 
     public static final String CAMPO_ID_DOENTE_COMMPLETO = BdTabelaDoentes.CAMPO_ID_COMPLETO + " AS " + CAMPO_ID_DOENTE;
 
-    public static final String[] TODOS_CAMPOS_TESTES = {CAMPO_ID_COMPLETO, DATA_TESTE_COMPLETO,RESULTADO_TESTE_COMPLETO};
+    public static final String[] TODOS_CAMPOS_TESTES = {CAMPO_ID_COMPLETO, DATA_TESTE_COMPLETO,RESULTADO_TESTE_COMPLETO,CAMPO_ID_DOENTE_COMPLETO};
     private SQLiteDatabase db;
 
     public BdTabelaTestes(SQLiteDatabase bd){this.db = bd;}
@@ -27,9 +27,9 @@ public class BdTabelaTestes implements BaseColumns {
                 _ID+ " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 DATA_TESTE + " TEXT NOT NULL, " +
                 RESULTADO_TESTE + " TEXT NOT NULL, " +
-                        CAMPO_ID_DOENTE + " TEXT NOT NULL," +
+                 CAMPO_ID_DOENTE + " INTEGER NOT NULL," +
                 " FOREIGN KEY (" +  CAMPO_ID_DOENTE + ") REFERENCES " +
-                BdTabelaDoentes.NOME_TABELA + "(" + BdTabelaDoentes._ID+ ")"+
+                BdTabelaDoentes.NOME_TABELA + "(" + BdTabelaDoentes._ID + ")"+
                 ")");
 
     }     /**

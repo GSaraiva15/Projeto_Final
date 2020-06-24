@@ -62,4 +62,30 @@ public class Converte {
         testes.setIdDoente(cursor.getLong(cursor.getColumnIndex(BdTabelaTestes.CAMPO_ID_DOENTE)));
         return testes;
     }
+    public static ContentValues concelhosToContentValues(Concelhos concelhos){
+        ContentValues valores = new ContentValues();
+        valores.put(BdTabelaConcelhos.NOME_CONCELHO, concelhos.getNome_concelho());
+        valores.put(BdTabelaConcelhos.NR_INFETADOS_CONCELHO, concelhos.getNr_infetados());
+        valores.put(BdTabelaConcelhos.NR_RECUPERADOS_CONCELHO, concelhos.getNr_recuperados());
+        valores.put(BdTabelaConcelhos.NR_OBITOS_CONCELHO, concelhos.getNr_obitos());
+        valores.put(BdTabelaConcelhos.NR_HABITANTES_CONCELHO,concelhos.getNr_Habitante());
+        return  valores ;
+    }
+    public static Concelhos contentValuesToConcelhos(ContentValues valores){
+        Concelhos concelhos = new Concelhos();
+        concelhos.setId(valores.getAsLong(BdTabelaConcelhos._ID));
+        concelhos.setNr_infetados(valores.getAsString(BdTabelaConcelhos.NR_INFETADOS_CONCELHO));
+        concelhos.setNr_recuperados(valores.getAsString(BdTabelaConcelhos.NR_RECUPERADOS_CONCELHO));
+        concelhos.setNr_obitos(valores.getAsString(BdTabelaConcelhos.NR_OBITOS_CONCELHO));
+        concelhos.setNr_Habitante(valores.getAsInteger(BdTabelaConcelhos.NR_HABITANTES_CONCELHO));
+        return concelhos;
+    }
+    public static Concelhos cursorToConcelho(Cursor cursor){
+        Concelhos concelhos = new Concelhos();
+        concelhos.setId(cursor.getLong(cursor.getColumnIndex(BdTabelaConcelhos._ID)));
+        concelhos.setNr_infetados(cursor.getString(cursor.getColumnIndex(BdTabelaConcelhos.NR_INFETADOS_CONCELHO)));
+        concelhos.setNr_recuperados(cursor.getString(cursor.getColumnIndex(BdTabelaConcelhos.NR_OBITOS_CONCELHO)));
+        concelhos.setNr_Habitante(cursor.getInt(cursor.getColumnIndex(BdTabelaConcelhos.NR_HABITANTES_CONCELHO)));
+        return concelhos;
+    }
 }

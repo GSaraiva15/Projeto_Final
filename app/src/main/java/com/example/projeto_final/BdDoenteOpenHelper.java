@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 public class BdDoenteOpenHelper extends SQLiteOpenHelper {
     public static final String NOME_BD_PROJ_FINAL = "bdProjetoFinal.db";
     public static final int VERSAO_BASE_DADOS = 1;
+    private final Context context;
 
 
     /**
@@ -21,6 +22,8 @@ public class BdDoenteOpenHelper extends SQLiteOpenHelper {
      */
     public BdDoenteOpenHelper(@Nullable Context context) {
         super(context, NOME_BD_PROJ_FINAL, null, VERSAO_BASE_DADOS);
+
+        this.context = context;
     }
 
     /**
@@ -40,6 +43,66 @@ public class BdDoenteOpenHelper extends SQLiteOpenHelper {
        BdTabelaConcelhos tabelaConcelhos = new BdTabelaConcelhos(db);
        tabelaConcelhos.criar();
 
+    }
+    private void inserirConcelho (SQLiteDatabase db){
+        BdTabelaConcelhos tabelaConcelhos = new BdTabelaConcelhos(db);
+        Concelhos concelhos = new Concelhos();
+
+        concelhos.setNome_concelho(context.getString(R.string.aguiarDaBeira));
+        concelhos.setNr_Habitante(5473);
+        tabelaConcelhos.insert(Converte.concelhosToContentValues(concelhos));
+
+        concelhos.setNome_concelho(context.getString(R.string.almeida));
+        concelhos.setNr_Habitante(7242);
+        tabelaConcelhos.insert(Converte.concelhosToContentValues(concelhos));
+
+        concelhos.setNome_concelho(context.getString(R.string.celoricoDaBeira));
+        concelhos.setNr_Habitante(7693);
+        tabelaConcelhos.insert(Converte.concelhosToContentValues(concelhos));
+
+        concelhos.setNome_concelho(context.getString(R.string.figueiraDeCasteloRodrigo));
+        concelhos.setNr_Habitante(6260);
+        tabelaConcelhos.insert(Converte.concelhosToContentValues(concelhos));
+
+        concelhos.setNome_concelho(context.getString(R.string.fornosdealgodres));
+        concelhos.setNr_Habitante(4989);
+        tabelaConcelhos.insert(Converte.concelhosToContentValues(concelhos));
+
+        concelhos.setNome_concelho(context.getString(R.string.gouveia));
+        concelhos.setNr_Habitante(14046);
+        tabelaConcelhos.insert(Converte.concelhosToContentValues(concelhos));
+
+        concelhos.setNome_concelho(context.getString(R.string.guarda));
+        concelhos.setNr_Habitante(42541);
+        tabelaConcelhos.insert(Converte.concelhosToContentValues(concelhos));
+
+        concelhos.setNome_concelho(context.getString(R.string.manteigas));
+        concelhos.setNr_Habitante(3430);
+        tabelaConcelhos.insert(Converte.concelhosToContentValues(concelhos));
+
+        concelhos.setNome_concelho(context.getString(R.string.meda));
+        concelhos.setNr_Habitante(5202);
+        tabelaConcelhos.insert(Converte.concelhosToContentValues(concelhos));
+
+        concelhos.setNome_concelho(context.getString(R.string.pinhel));
+        concelhos.setNr_Habitante(9627);
+        tabelaConcelhos.insert(Converte.concelhosToContentValues(concelhos));
+
+        concelhos.setNome_concelho(context.getString(R.string.sabugal));
+        concelhos.setNr_Habitante(12544);
+        tabelaConcelhos.insert(Converte.concelhosToContentValues(concelhos));
+
+        concelhos.setNome_concelho(context.getString(R.string.seia));
+        concelhos.setNr_Habitante(24702);
+        tabelaConcelhos.insert(Converte.concelhosToContentValues(concelhos));
+
+        concelhos.setNome_concelho(context.getString(R.string.trancoso));
+        concelhos.setNr_Habitante(9878);
+        tabelaConcelhos.insert(Converte.concelhosToContentValues(concelhos));
+
+        concelhos.setNome_concelho(context.getString(R.string.vilaNovaDeFozCoa));
+        concelhos.setNr_Habitante(7312);
+        tabelaConcelhos.insert(Converte.concelhosToContentValues(concelhos));
     }
 
     /**

@@ -6,6 +6,15 @@ public class Concelhos {
     private String nr_infetados;
     private String nr_recuperados;
     private String nr_obitos;
+    private Integer nr_Habitante = 0;
+
+    public Integer getNr_Habitante() {
+        return nr_Habitante;
+    }
+
+    public void setNr_Habitante(Integer nr_Habitante) {
+        this.nr_Habitante = nr_Habitante;
+    }
 
     public long getId() {
         return id;
