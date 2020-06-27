@@ -17,8 +17,8 @@ public class BdDoenteOpenHelper extends SQLiteOpenHelper {
      * This method always returns very quickly.  The database is not actually
      * created or opened until one of {@link #getWritableDatabase} or
      * {@link #getReadableDatabase} is called.
-     *  @param context to use for locating paths to the the database
      *
+     * @param context to use for locating paths to the the database
      */
     public BdDoenteOpenHelper(@Nullable Context context) {
         super(context, NOME_BD_PROJ_FINAL, null, VERSAO_BASE_DADOS);
@@ -35,23 +35,23 @@ public class BdDoenteOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         BdTabelaDoentes tabelaRegistoDoentes = new BdTabelaDoentes(db);
-       tabelaRegistoDoentes.criar();
+        tabelaRegistoDoentes.criar();
 
-       BdTabelaTestes tabelaTestes = new BdTabelaTestes(db);
-       tabelaTestes.criar();
+        BdTabelaTestes tabelaTestes = new BdTabelaTestes(db);
+        tabelaTestes.criar();
 
-       BdTabelaConcelhos tabelaConcelhos = new BdTabelaConcelhos(db);
-       tabelaConcelhos.criar();
+        BdTabelaConcelhos tabelaConcelhos = new BdTabelaConcelhos(db);
+        tabelaConcelhos.criar();
+        inserirConcelho(tabelaConcelhos);
 
     }
-    private void inserirConcelho (SQLiteDatabase db){
-        BdTabelaConcelhos tabelaConcelhos = new BdTabelaConcelhos(db);
+
+    private void inserirConcelho(BdTabelaConcelhos tabelaConcelhos) {
         Concelhos concelhos = new Concelhos();
 
         concelhos.setNome_concelho(context.getString(R.string.aguiarDaBeira));
         concelhos.setNr_Habitante(5473);
         tabelaConcelhos.insert(Converte.concelhosToContentValues(concelhos));
-
         concelhos.setNome_concelho(context.getString(R.string.almeida));
         concelhos.setNr_Habitante(7242);
         tabelaConcelhos.insert(Converte.concelhosToContentValues(concelhos));

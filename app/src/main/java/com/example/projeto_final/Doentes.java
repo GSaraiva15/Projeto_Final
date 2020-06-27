@@ -5,7 +5,7 @@ public class Doentes {
     private String nome_doente;
     private String nascimento_doente;
     private String telemovel_doente;
-    private String concelho_doente;
+    private Integer id_concelho;
     private String sexo_doente;
     private String cronico_doente;
     private String estado_doente;
@@ -42,12 +42,12 @@ public class Doentes {
         this.telemovel_doente = telemovel_doente;
     }
 
-    public String getConcelho_doente() {
-        return concelho_doente;
+    public Integer getId_concelho() {
+        return id_concelho;
     }
 
-    public void setConcelho_doente(String concelho_doente) {
-        this.concelho_doente = concelho_doente;
+    public void setId_concelho(Integer id_concelho) {
+        this.id_concelho = id_concelho;
     }
 
     public String getSexo_doente() {

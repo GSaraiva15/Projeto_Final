@@ -27,13 +27,13 @@ public class BdTabelaConcelhos implements BaseColumns {
 
     public BdTabelaConcelhos(SQLiteDatabase db){this.db =db;}
     public void criar(){
-        db.execSQL("CREATE TABLE " + NOME_TABELA + "(" +
-                        _ID+ " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+        db.execSQL("CREATE TABLE " + NOME_TABELA + " (" +
+                        _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         NOME_CONCELHO + " TEXT NOT NULL, " +
-                        NR_INFETADOS_CONCELHO + " TEXT NOT NULL," +
-                        NR_RECUPERADOS_CONCELHO +  " TEXT NOT NULL," +
-                        NR_OBITOS_CONCELHO + " TEXT NOT NULL," +
-                NR_HABITANTES_CONCELHO + "INTEGER NOT NULL " +
+                        NR_INFETADOS_CONCELHO + " INTEGER DEFAULT 0," +
+                        NR_RECUPERADOS_CONCELHO +  " INTEGER DEFAULT 0," +
+                        NR_OBITOS_CONCELHO + " INTEGER DEFAULT 0," +
+                NR_HABITANTES_CONCELHO + " INTEGER NOT NULL " +
                         ")"
         );
     }
