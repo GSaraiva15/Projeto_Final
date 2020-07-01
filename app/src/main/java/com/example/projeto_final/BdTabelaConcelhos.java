@@ -33,7 +33,7 @@ public class BdTabelaConcelhos implements BaseColumns {
                         NR_INFETADOS_CONCELHO + " INTEGER DEFAULT 0," +
                         NR_RECUPERADOS_CONCELHO +  " INTEGER DEFAULT 0," +
                         NR_OBITOS_CONCELHO + " INTEGER DEFAULT 0," +
-                NR_HABITANTES_CONCELHO + " INTEGER NOT NULL " +
+                        NR_HABITANTES_CONCELHO + " INTEGER NOT NULL " +
                         ")"
         );
     }

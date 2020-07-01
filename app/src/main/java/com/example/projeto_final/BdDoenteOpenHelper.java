@@ -42,6 +42,7 @@ public class BdDoenteOpenHelper extends SQLiteOpenHelper {
 
         BdTabelaConcelhos tabelaConcelhos = new BdTabelaConcelhos(db);
         tabelaConcelhos.criar();
+
         inserirConcelho(tabelaConcelhos);
 
     }
@@ -52,6 +53,7 @@ public class BdDoenteOpenHelper extends SQLiteOpenHelper {
         concelhos.setNome_concelho(context.getString(R.string.aguiarDaBeira));
         concelhos.setNr_Habitante(5473);
         tabelaConcelhos.insert(Converte.concelhosToContentValues(concelhos));
+
         concelhos.setNome_concelho(context.getString(R.string.almeida));
         concelhos.setNr_Habitante(7242);
         tabelaConcelhos.insert(Converte.concelhosToContentValues(concelhos));

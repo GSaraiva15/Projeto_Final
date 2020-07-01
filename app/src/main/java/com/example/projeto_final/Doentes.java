@@ -9,6 +9,15 @@ public class Doentes {
     private String sexo_doente;
     private String cronico_doente;
     private String estado_doente;
+    private String data_estado;
+
+    public String getData_estado() {
+        return data_estado;
+    }
+
+    public void setData_estado(String data_estado) {
+        this.data_estado = data_estado;
+    }
 
     public long getId() {
         return id;

@@ -62,7 +62,7 @@ public class BdTestes {
         return id;
     }
 
-    private long insereDoente(BdTabelaDoentes tabelaDoentes, String Nome, String Data_Nascimento, String Telemovel, Integer Concelho, String Sexo, String Cronico, String Estado) {
+    private long insereDoente(BdTabelaDoentes tabelaDoentes, String Nome, String Data_Nascimento, String Telemovel, Integer Concelho, String Sexo, String Cronico, String Estado,String dataEstado) {
         Doentes doentes = new Doentes();
         doentes.setNome_doente(Nome);
         doentes.setNascimento_doente(Data_Nascimento);
@@ -71,6 +71,7 @@ public class BdTestes {
         doentes.setSexo_doente(Sexo);
         doentes.setCronico_doente(Cronico);
         doentes.setEstado_doente(Estado);
+        doentes.setData_estado(dataEstado);
         return insereDoente(tabelaDoentes, doentes);
     }
 
@@ -88,7 +89,7 @@ public class BdTestes {
         cursor.close();
         Cursor cursor1 = tabelaConcelhos.query(new String[]{"_id"}, "nome_concelho_ = ?", new String[]{"Seia"}, null, null, null);
         Integer id_conselho = cursor1.getColumnIndex("_id");
-        insereDoente(tabelaDoentes, "Gonçalo", "15/02/2000", "987654321", id_conselho, "Masculino", "Não,", "Recuperado");
+        insereDoente(tabelaDoentes, "Gonçalo", "15/02/2000", "987654321", id_conselho, "Masculino", "Não,", "Recuperado","25/06/2020");
         cursor = tabelaDoentes.query(BdTabelaDoentes.TODOS_CAMPOS_DOENTE, null, null, null, null, null);
         assertEquals(registos + 1, cursor.getCount());
         cursor.close();
@@ -114,6 +115,7 @@ public class BdTestes {
         doentes.setSexo_doente("Masculino");
         doentes.setCronico_doente("Não");
         doentes.setEstado_doente("Recuperado");
+        doentes.setData_estado("25/06/2020");
         long id = insereDoente(tabelaDoentes, doentes);
 
         doentes.setNome_doente("Gonçalo Saraiva");
@@ -124,6 +126,7 @@ public class BdTestes {
         doentes.setSexo_doente("Masculino");
         doentes.setCronico_doente("Não");
         doentes.setEstado_doente("Recuperado");
+        doentes.setData_estado("25/06/2020");
         int registosAlterados = tabelaDoentes.update(Converte.doenteToContentValues(doentes), BdTabelaDoentes._ID + "=?", new String[]{String.valueOf(id)});
         assertEquals(1, registosAlterados);
         bdDoente.close();
@@ -134,10 +137,12 @@ public class BdTestes {
         Context appContext = getTargetContext();
         BdDoenteOpenHelper openHelper = new BdDoenteOpenHelper(appContext);
         SQLiteDatabase db = openHelper.getWritableDatabase();
+
         BdTabelaDoentes tabelaDoentes = new BdTabelaDoentes(db);
         BdTabelaConcelhos tabelaConcelhos = new BdTabelaConcelhos(db);
+
         Integer id_conselho = tabelaConcelhos.query(new String[]{"_id"}, "nome_concelho_ = ?", new String[]{"Seia"}, null, null, null).getColumnIndex("_id");
-        long id = insereDoente(tabelaDoentes, "Gonçalo", "15/02/2000", "987654321", id_conselho, "Masculino", "Não,", "Recuperado");
+        long id = insereDoente(tabelaDoentes, "Gonçalo", "15/02/2000", "987654321", id_conselho, "Masculino", "Não,", "Recuperado","25/06/2020");
         int registosApagados = tabelaDoentes.delete(BdTabelaDoentes._ID + "=?", new String[]{String.valueOf(id)});
         assertEquals(1, registosApagados);
         db.close();
@@ -157,7 +162,7 @@ public class BdTestes {
         cursor.close();
         Integer id_conselho = tabelaConcelhos.query(new String[]{"_id"}, "nome_concelho_ = ?", new String[]{"Seia"}, null, null, null).getColumnIndex("_id");
 
-        insereDoente(tabelaDoentes, "Gonçalo", "15/02/2000", "987654321", id_conselho, "Masculino", "Não,", "Recuperado");
+        insereDoente(tabelaDoentes, "Gonçalo", "15/02/2000", "987654321", id_conselho, "Masculino", "Não,", "Recuperado","25/06/2020");
         cursor = tabelaDoentes.query(BdTabelaDoentes.TODOS_CAMPOS_DOENTE, null, null, null, null, null);
         assertEquals(registos + 1, cursor.getCount());
         cursor.close();
@@ -169,7 +174,7 @@ public class BdTestes {
         BdTabelaConcelhos tabelaConcelhos = new BdTabelaConcelhos(db);
 
         Integer id_conselho = tabelaConcelhos.query(new String[]{"_id"}, "nome_concelho_ = ?", new String[]{"Seia"}, null, null, null).getColumnIndex("_id");
-        long idTeste = insereDoente(tabelaDoentes, "Gonçalo", "15/02/2000", "987654321", id_conselho, "Masculino", "Não,", "Recuperado");
+        long idTeste = insereDoente(tabelaDoentes, "Gonçalo", "15/02/2000", "987654321", id_conselho, "Masculino", "Não,", "Recuperado","25/06/2020");
 
         Testes testes = new Testes();
         testes.setData_testes(dataTestes);

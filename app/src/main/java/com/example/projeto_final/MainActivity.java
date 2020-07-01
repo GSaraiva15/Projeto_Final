@@ -23,8 +23,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intentEstatistica = new Intent(this,DisplayVerEstatisticas.class);
         startActivity(intentEstatistica);
     }
-    public void verMapa (View view){
-        Intent intentMapa = new Intent(this,DisplayMapa.class);
-        startActivity(intentMapa);
-    }
+
+
 }

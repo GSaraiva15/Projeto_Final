@@ -15,6 +15,7 @@ public class BdTabelaDoentes implements BaseColumns {
     public static final String SEXO_DOENTE = "Sexo";
     public static final String CRONICO_DOENTE ="Cronico";
     public static final String ESTADO_DOENTE ="Estado";
+    public static final String DATA_ESTADO_ATUAL = "Data_estado";
     public static final String CAMPO_ID_CONCELHO = "id_concelho";
 
     public static final String CAMPO_ID_COMPLETO = NOME_TABELA + "." + _ID;
@@ -25,9 +26,10 @@ public class BdTabelaDoentes implements BaseColumns {
     public static final String SEXO_DOENTE_COMPLETO = NOME_TABELA + "." + SEXO_DOENTE;
     public static final String CRONICO_DOENTE_COMPLETO  = NOME_TABELA + "." + CRONICO_DOENTE;
     public static final String ESTADO_DOENTE_COMPLETO = NOME_TABELA + "." + ESTADO_DOENTE;
+    public static final String DATA_ESTADO_ATAUAL_COMLPETO = NOME_TABELA + "." + DATA_ESTADO_ATUAL;
     public static final String CAMPO_ID_CONCELHO_COMPLETO = BdTabelaConcelhos.CAMPO_ID_COMPLETO + " AS " + CONCELHO_DOENTE;
 
-    public static final String[] TODOS_CAMPOS_DOENTE= {CAMPO_ID_COMPLETO, NOME_DOENTE_COMPLETO, NASCIMENTO_DOENTE_COMPLETO, TELEMOVEL_DOENTE_COMPLETO, SEXO_DOENTE_COMPLETO, CRONICO_DOENTE_COMPLETO, ESTADO_DOENTE_COMPLETO/*,CAMPO_ID_CONCELHO_COMPLETO*/};
+    public static final String[] TODOS_CAMPOS_DOENTE= {/*CAMPO_ID_COMPLETO,*/ NOME_DOENTE_COMPLETO, NASCIMENTO_DOENTE_COMPLETO, TELEMOVEL_DOENTE_COMPLETO, SEXO_DOENTE_COMPLETO, CRONICO_DOENTE_COMPLETO, ESTADO_DOENTE_COMPLETO,DATA_ESTADO_ATAUAL_COMLPETO/*,CAMPO_ID_CONCELHO_COMPLETO*/};
 
     private SQLiteDatabase db;
 
@@ -43,6 +45,7 @@ public class BdTabelaDoentes implements BaseColumns {
                         SEXO_DOENTE +  " TEXT NOT NULL," +
                         CRONICO_DOENTE +" TEXT NOT NULL," +
                         ESTADO_DOENTE + " TEXT NOT NULL," +
+                        DATA_ESTADO_ATUAL + " TEXT NOT NULL," +
                         CAMPO_ID_CONCELHO + " INTEGER NOT NULL," + //CAMPO_ID_CONCELHO
                         "FOREIGN KEY (" + CAMPO_ID_CONCELHO + ") REFERENCES " +
                         BdTabelaConcelhos.NOME_TABELA + "(" + BdTabelaConcelhos._ID +")"+

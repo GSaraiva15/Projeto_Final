@@ -13,6 +13,7 @@ public class Converte {
         valores.put(BdTabelaDoentes.SEXO_DOENTE, doentes.getSexo_doente());
         valores.put(BdTabelaDoentes.CRONICO_DOENTE, doentes.getCronico_doente());
         valores.put(BdTabelaDoentes.ESTADO_DOENTE, doentes.getEstado_doente());
+        valores.put(BdTabelaDoentes.DATA_ESTADO_ATUAL,doentes.getData_estado());
         return valores;
     }
 
@@ -25,6 +26,7 @@ public class Converte {
         doentes.setSexo_doente(valores.getAsString(BdTabelaDoentes.SEXO_DOENTE));
         doentes.setCronico_doente(valores.getAsString(BdTabelaDoentes.CRONICO_DOENTE));
         doentes.setEstado_doente(valores.getAsString(BdTabelaDoentes.ESTADO_DOENTE));
+        doentes.setData_estado(valores.getAsString(BdTabelaDoentes.DATA_ESTADO_ATUAL));
         return doentes;
     }
     public static Doentes cursorToDoente(Cursor cursor){
@@ -37,6 +39,7 @@ public class Converte {
         doentes.setSexo_doente(cursor.getString(cursor.getColumnIndex(BdTabelaDoentes.SEXO_DOENTE)));
         doentes.setCronico_doente(cursor.getString(cursor.getColumnIndex(BdTabelaDoentes.CRONICO_DOENTE)));
         doentes.setEstado_doente(cursor.getString(cursor.getColumnIndex(BdTabelaDoentes.ESTADO_DOENTE)));
+        doentes.setData_estado(cursor.getString(cursor.getColumnIndex(BdTabelaDoentes.DATA_ESTADO_ATUAL)));
         return doentes;
     }
     public static ContentValues testesToContentValues(Testes testes){
@@ -74,17 +77,17 @@ public class Converte {
     public static Concelhos contentValuesToConcelhos(ContentValues valores){
         Concelhos concelhos = new Concelhos();
         concelhos.setId(valores.getAsLong(BdTabelaConcelhos._ID));
-        concelhos.setNr_infetados(valores.getAsString(BdTabelaConcelhos.NR_INFETADOS_CONCELHO));
-        concelhos.setNr_recuperados(valores.getAsString(BdTabelaConcelhos.NR_RECUPERADOS_CONCELHO));
-        concelhos.setNr_obitos(valores.getAsString(BdTabelaConcelhos.NR_OBITOS_CONCELHO));
+        concelhos.setNr_infetados(valores.getAsInteger(BdTabelaConcelhos.NR_INFETADOS_CONCELHO));
+        concelhos.setNr_recuperados(valores.getAsInteger(BdTabelaConcelhos.NR_RECUPERADOS_CONCELHO));
+        concelhos.setNr_obitos(valores.getAsInteger(BdTabelaConcelhos.NR_OBITOS_CONCELHO));
         concelhos.setNr_Habitante(valores.getAsInteger(BdTabelaConcelhos.NR_HABITANTES_CONCELHO));
         return concelhos;
     }
     public static Concelhos cursorToConcelho(Cursor cursor){
         Concelhos concelhos = new Concelhos();
         concelhos.setId(cursor.getLong(cursor.getColumnIndex(BdTabelaConcelhos._ID)));
-        concelhos.setNr_infetados(cursor.getString(cursor.getColumnIndex(BdTabelaConcelhos.NR_INFETADOS_CONCELHO)));
-        concelhos.setNr_recuperados(cursor.getString(cursor.getColumnIndex(BdTabelaConcelhos.NR_OBITOS_CONCELHO)));
+        concelhos.setNr_infetados(cursor.getInt(cursor.getColumnIndex(BdTabelaConcelhos.NR_INFETADOS_CONCELHO)));
+        concelhos.setNr_recuperados(cursor.getInt(cursor.getColumnIndex(BdTabelaConcelhos.NR_OBITOS_CONCELHO)));
         concelhos.setNr_Habitante(cursor.getInt(cursor.getColumnIndex(BdTabelaConcelhos.NR_HABITANTES_CONCELHO)));
         return concelhos;
     }
