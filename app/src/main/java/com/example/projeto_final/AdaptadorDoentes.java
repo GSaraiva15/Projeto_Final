@@ -2,6 +2,7 @@ package com.example.projeto_final;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
@@ -45,9 +46,9 @@ public class AdaptadorDoentes extends RecyclerView.Adapter<AdaptadorDoentes.View
      */
     @NonNull
     @Override
-    public AdaptadorDoentes.ViewHolderDoentes onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        view itemDoente = layoutInflater.from(context).inflate(R.layoutitem_doente,parent, false);
-        return new viewHolderDoentes(itemDoente);
+    public ViewHolderDoentes onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemDoente = LayoutInflater.from(context).inflate(R.layout.item_doente,parent, false);
+        return new ViewHolderDoentes(itemDoente);
     }
 
     /**
@@ -96,9 +97,9 @@ public class AdaptadorDoentes extends RecyclerView.Adapter<AdaptadorDoentes.View
 
     private AdaptadorDoentes.viewHolderDoente viewHolderDoenteSelecionado = null;
 
-    public class viewHolderDoentes extends RecyclerView.viewHolder implements View.OnClickListener{
+    public class ViewHolderDoentes extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-       public viewHolderDoentes(@NonNull View itemView){
+       public ViewHolderDoentes(@NonNull View itemView){
            super(itemView);
        }
 
