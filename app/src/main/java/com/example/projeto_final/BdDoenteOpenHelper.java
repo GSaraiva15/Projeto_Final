@@ -10,6 +10,7 @@ public class BdDoenteOpenHelper extends SQLiteOpenHelper {
     public static final String NOME_BD_PROJ_FINAL = "bdProjetoFinal.db";
     public static final int VERSAO_BASE_DADOS = 1;
     private final Context context;
+    private final DESENVOLVIMENTO;
 
 
     /**
@@ -46,7 +47,9 @@ public class BdDoenteOpenHelper extends SQLiteOpenHelper {
         inserirConcelho(tabelaConcelhos);
 
     }
+    private void seedData(SQLiteDatabase db){
 
+    }
     private void inserirConcelho(BdTabelaConcelhos tabelaConcelhos) {
         Concelhos concelhos = new Concelhos();
 
