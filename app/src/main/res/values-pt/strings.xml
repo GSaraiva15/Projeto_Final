@@ -31,4 +31,10 @@
     <string name="resultadoPositivo">Resultado Positivo</string>
     <string name="ResultadoNegativo">Resultado Negativo</string>
     <string name="formatoData">Por Favor escreva DD/MM/YYYY</string>
+    <string name="button_inserir_paciente">Inserir Paciente</string>
+    <string name="button_inserir_teste">Inserir Teste</string>
+    <string name="buttun_delete_Patient">Apagar Paciente</string>
+    <string name="buttun_alterar_doente">Alterar Paciente</string>
+    <string name="buttun_apagar_teste">Apagar Teste</string>
+    <string name="button_alterar_Teste">Alterar Teste</string>
 </resources>
