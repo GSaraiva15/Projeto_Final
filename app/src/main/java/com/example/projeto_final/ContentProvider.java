@@ -159,7 +159,7 @@ public class ContentProvider extends android.content.ContentProvider {
             case URI_TESTES:
                 return new BdTabelaTestes(bd).query(projection,selection,selectionArgs,null,null,sortOrder);
             case URI_ID_TESTES:
-                return new BdTabelaTestes(bd).query(projection,BdTabelaDoentes._ID + "=?",new String[]{id},null,null,sortOrder);
+                return new BdTabelaTestes(bd).query(projection,BdTabelaTestes._ID + "=?",new String[]{id},null,null,sortOrder);
             default:
                 throw new UnsupportedOperationException("Endereço de query inválido: " +uri.getPath());
         }
@@ -265,7 +265,20 @@ public class ContentProvider extends android.content.ContentProvider {
      */
     @Override
     public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
-        return 0;
+        SQLiteDatabase bd = openHelper.getWritableDatabase();
+
+        String id = uri.getLastPathSegment();
+
+        switch (getUriMatcher().match(uri)){
+            case URI_ID_CONCELHOS:
+                return new BdTabelaConcelhos(bd).delete(BdTabelaConcelhos._ID + "=?", new String[]{id});
+            case URI_ID_DOENTES:
+                return new BdTabelaDoentes(bd).delete(BdTabelaDoentes._ID + "=?",new String[]{id});
+            case URI_ID_TESTES:
+                return new BdTabelaTestes(bd).delete(BdTabelaTestes._ID + "=?", new String[]{id});
+            default:
+                throw new UnsupportedOperationException("Endereço delete inválido: " + uri.getPath());
+        }
     }
 
     /**
@@ -288,6 +301,19 @@ public class ContentProvider extends android.content.ContentProvider {
      */
     @Override
     public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection, @Nullable String[] selectionArgs) {
-        return 0;
+       SQLiteDatabase bd = openHelper.getWritableDatabase();
+
+       String id = uri.getLastPathSegment();
+
+       switch (getUriMatcher().match(uri)){
+           case URI_ID_CONCELHOS:
+                return new BdTabelaConcelhos(bd).update(values,BdTabelaConcelhos._ID + "=?", new String[]{id});
+           case URI_ID_DOENTES:
+               return new BdTabelaDoentes(bd).update(values, BdTabelaDoentes._ID + "=?",new String[]{id});
+           case URI_ID_TESTES:
+               return new BdTabelaTestes(bd).update(values,BdTabelaTestes._ID + "=?",new String[]{id});
+           default:
+               throw new UnsupportedOperationException("Endereço de update inválido: " + uri.getPath());
+       }
     }
 }
