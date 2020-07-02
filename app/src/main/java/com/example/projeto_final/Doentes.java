@@ -2,14 +2,14 @@ package com.example.projeto_final;
 
 public class Doentes {
     private long id = -1;
-    private String nome_doente;
-    private String nascimento_doente;
+    private String nome_doente;//
+    private String nascimento_doente;//
     private String telemovel_doente;
-    private Integer id_concelho;
-    private String sexo_doente;
-    private String cronico_doente;
-    private String estado_doente;
-    private String data_estado;
+    private Integer id_concelho;//
+    private String sexo_doente;//
+    private String cronico_doente;//
+    private String estado_doente;////
+    private String data_estado;//
 
     public String getData_estado() {
         return data_estado;
