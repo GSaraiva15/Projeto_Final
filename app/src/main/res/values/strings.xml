@@ -44,7 +44,6 @@
     <string name="ResultadoNegativo">Negative Result</string>
     <string name="formatoData">Please Write DD/MM/YYYY</string>
     <string name="fornosdealgodres" translatable="false">Fornos de Algodres</string>
-    <string name="">Insert patient</string>
     <string name="button_inserir_paciente">Insert Patient</string>
     <string name="button_inserir_teste">Insert Test</string>
     <string name="buttun_alterar_doente">Update Patient</string>

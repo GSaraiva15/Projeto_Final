@@ -10,7 +10,7 @@ public class BdDoenteOpenHelper extends SQLiteOpenHelper {
     public static final String NOME_BD_PROJ_FINAL = "bdProjetoFinal.db";
     public static final int VERSAO_BASE_DADOS = 1;
     private final Context context;
-    private final DESENVOLVIMENTO;
+    private final boolean DESENVOLVIMENTO = true;
 
 
     /**
@@ -48,6 +48,22 @@ public class BdDoenteOpenHelper extends SQLiteOpenHelper {
 
     }
     private void seedData(SQLiteDatabase db){
+        BdTabelaDoentes tabelaDoentes = new BdTabelaDoentes(db);
+        BdTabelaConcelhos tabelaConcelhos   = new BdTabelaConcelhos(db);
+
+        Doentes doentes = new Doentes();
+        doentes.setNome_doente("Gonçalo");
+        doentes.setNascimento_doente("15/02/2000");
+        doentes.setTelemovel_doente("987654321");
+        Integer id_conselho = tabelaConcelhos.query(new String[]{"_id"}, "nome_concelho_ = ?", new String[]{"Seia"}, null, null, null).getColumnIndex("_id");
+        doentes.setId_concelho(id_conselho);
+        doentes.setSexo_doente("Masculino");
+        doentes.setCronico_doente("Não");
+        doentes.setEstado_doente("Recuperado");
+        doentes.setData_estado("25/06/2020");
+
+        tabelaDoentes.insert(Converte.doenteToContentValues(doentes));
+
 
     }
     private void inserirConcelho(BdTabelaConcelhos tabelaConcelhos) {

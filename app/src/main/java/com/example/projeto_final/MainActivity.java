@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void inserirDados (View view){
 
-        Intent intentInserirDados = new Intent(this,DisplayInserir.class);
+        Intent intentInserirDados = new Intent(this, DisplayMostrar.class);
         startActivity(intentInserirDados);
     }
     public void verEstatisticas (View view){
