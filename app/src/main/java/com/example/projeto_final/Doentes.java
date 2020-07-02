@@ -1,5 +1,8 @@
 package com.example.projeto_final;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+
 public class Doentes {
     private long id = -1;
     private String nome_doente;//
@@ -81,5 +84,68 @@ public class Doentes {
 
     public void setEstado_doente(String estado_doente) {
         this.estado_doente = estado_doente;
+    }
+
+    public ContentValues getContentValues() {
+        ContentValues valores = new ContentValues();
+        valores.put(BdTabelaDoentes.NOME_DOENTE,nome_doente );
+        valores.put(BdTabelaDoentes.NASCIMENTO_DOENTE, nascimento_doente);
+        valores.put(BdTabelaDoentes.TELEMOVEL_DOENTE,telemovel_doente);
+        valores.put(BdTabelaDoentes.CAMPO_ID_CONCELHO,id_concelho);
+        valores.put(BdTabelaDoentes.SEXO_DOENTE,sexo_doente);
+        valores.put(BdTabelaDoentes.CRONICO_DOENTE,cronico_doente);
+        valores.put(BdTabelaDoentes.ESTADO_DOENTE, estado_doente);
+        valores.put(BdTabelaDoentes.DATA_ESTADO_ATUAL,data_estado);
+
+
+        return valores;
+    }
+
+    public static Doentes fromCursor(Cursor cursor) {
+
+        long id = cursor.getLong(
+                cursor.getColumnIndex(BdTabelaDoentes._ID)
+        );
+
+        String nome = cursor.getString(
+                cursor.getColumnIndex(BdTabelaDoentes.NOME_DOENTE  )
+        );
+
+        String dataNascimetno = cursor.getString(
+                cursor.getColumnIndex(BdTabelaDoentes.NASCIMENTO_DOENTE)
+        );
+        String telemovel = cursor.getString(
+                cursor.getColumnIndex(BdTabelaDoentes.TELEMOVEL_DOENTE)
+        );
+        Integer concelho = cursor.getInt(
+                cursor.getColumnIndex(BdTabelaDoentes.CAMPO_ID_CONCELHO)
+        );
+        String genero = cursor.getString(
+                cursor.getColumnIndex(BdTabelaDoentes.SEXO_DOENTE)
+        );
+        String cronico = cursor.getString(
+                cursor.getColumnIndex(BdTabelaDoentes.CRONICO_DOENTE)
+        );
+        String estado = cursor.getString(
+                cursor.getColumnIndex(BdTabelaDoentes.ESTADO_DOENTE)
+        );
+        String dataEstado = cursor.getString(
+                cursor.getColumnIndex(BdTabelaDoentes.DATA_ESTADO_ATUAL)
+        );
+
+
+        Doentes doentes = new Doentes();
+
+        doentes.setId(id);
+        doentes.setNome_doente(nome);
+        doentes.setData_estado(dataNascimetno);
+        doentes.setTelemovel_doente(telemovel);
+        doentes.setId_concelho(concelho);
+        doentes.setSexo_doente(genero);
+        doentes.setCronico_doente(cronico);
+        doentes.setEstado_doente(estado);
+        doentes.setData_estado(dataEstado);
+
+        return doentes;
     }
 }

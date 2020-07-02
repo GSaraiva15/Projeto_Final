@@ -4,6 +4,9 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
+import android.text.TextUtils;
+
+import java.util.Arrays;
 
 public class BdTabelaDoentes implements BaseColumns {
 
@@ -27,9 +30,10 @@ public class BdTabelaDoentes implements BaseColumns {
     public static final String CRONICO_DOENTE_COMPLETO  = NOME_TABELA + "." + CRONICO_DOENTE;
     public static final String ESTADO_DOENTE_COMPLETO = NOME_TABELA + "." + ESTADO_DOENTE;
     public static final String DATA_ESTADO_ATAUAL_COMLPETO = NOME_TABELA + "." + DATA_ESTADO_ATUAL;
-    public static final String CAMPO_ID_CONCELHO_COMPLETO = BdTabelaConcelhos.CAMPO_ID_COMPLETO + " AS " + CONCELHO_DOENTE;
+    public static final String CAMPO_ID_CONCELHO_COMPLETO = BdTabelaConcelhos.CAMPO_ID_COMPLETO + " AS " + CAMPO_ID_CONCELHO;
+    public static final String CAMPO_CONCELHO_COMPLETO = BdTabelaConcelhos.NOME_CONCELHO + " AS " + CONCELHO_DOENTE;
 
-    public static final String[] TODOS_CAMPOS_DOENTE= {/*CAMPO_ID_COMPLETO,*/ NOME_DOENTE_COMPLETO, NASCIMENTO_DOENTE_COMPLETO, TELEMOVEL_DOENTE_COMPLETO, SEXO_DOENTE_COMPLETO, CRONICO_DOENTE_COMPLETO, ESTADO_DOENTE_COMPLETO,DATA_ESTADO_ATAUAL_COMLPETO/*,CAMPO_ID_CONCELHO_COMPLETO*/};
+    public static final String[] TODOS_CAMPOS_DOENTE= {CAMPO_ID_COMPLETO, NOME_DOENTE_COMPLETO, NASCIMENTO_DOENTE_COMPLETO, TELEMOVEL_DOENTE_COMPLETO, SEXO_DOENTE_COMPLETO, CRONICO_DOENTE_COMPLETO, ESTADO_DOENTE_COMPLETO,DATA_ESTADO_ATAUAL_COMLPETO,CAMPO_ID_CONCELHO_COMPLETO,CONCELHO_DOENTE_COMPLETO};
 
     private SQLiteDatabase db;
 
@@ -82,8 +86,38 @@ public class BdTabelaDoentes implements BaseColumns {
      * {@link Cursor}s are not synchronized, see the documentation for more details.
      * @see Cursor
      */
-    public Cursor query(String[] columns, String selection,String[] selectionArgs,String groupBy,String having, String orderBy){
-        return db.query(NOME_TABELA,columns,selection,selectionArgs,groupBy,having,orderBy);
+    public Cursor query(String[] columns, String selection,
+                        String[] selectionArgs, String groupBy, String having,
+                        String orderBy){
+
+        if (!Arrays.asList(columns).contains(CAMPO_CONCELHO_COMPLETO)) {
+            return db.query(NOME_TABELA, columns, selection, selectionArgs, groupBy, having, orderBy);
+        }
+
+        String campos = TextUtils.join(",", columns);
+
+        String sql = "SELECT " + campos;
+        sql += " FROM " + NOME_TABELA + " INNER JOIN " + BdTabelaConcelhos.NOME_TABELA;
+        sql += " ON " + CAMPO_ID_CONCELHO + "=" + BdTabelaConcelhos.CAMPO_ID_COMPLETO;
+
+        if (selection != null) {
+            sql += " WHERE " + selection;
+        }
+
+        if (groupBy != null) {
+            sql += " GROUP BY " + groupBy;
+
+            if (having != null) {
+                sql += " HAVING " + having;
+            }
+        }
+
+        if (orderBy != null) {
+            sql += " ORDER BY " + orderBy;
+        }
+
+        return db.rawQuery(sql, selectionArgs);
+
     }
     /**
      * Convenience method for updating rows in the database.

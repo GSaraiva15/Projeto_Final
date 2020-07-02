@@ -46,6 +46,10 @@ public class BdDoenteOpenHelper extends SQLiteOpenHelper {
 
         inserirConcelho(tabelaConcelhos);
 
+        if( DESENVOLVIMENTO){
+            seedData(db);
+        }
+
     }
     private void seedData(SQLiteDatabase db){
         BdTabelaDoentes tabelaDoentes = new BdTabelaDoentes(db);

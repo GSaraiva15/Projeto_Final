@@ -8,9 +8,8 @@ import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Context;
-import android.content.CursorLoader;
+import androidx.loader.content.CursorLoader;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -38,7 +37,9 @@ public class DisplayMostrar extends AppCompatActivity implements LoaderManager.L
         recyclerViewDoentes.setLayoutManager(new LinearLayoutManager(this));
 
         adaptadorDoentes.setCursor(null);
-        LoaderManager.getInstance(this).initLoader(ID_CURSOR_LOADER_DOENTE,null,this);
+
+        LoaderManager.getInstance(this).initLoader(ID_CURSOR_LOADER_DOENTE, null, this);
+
 
     }
     public void inserirDoente (View view){
@@ -52,6 +53,7 @@ public class DisplayMostrar extends AppCompatActivity implements LoaderManager.L
         startActivity(intentInserirTestes);
     }
 
+
     /**
      * Instantiate and return a new Loader for the given ID.
      *
@@ -64,7 +66,7 @@ public class DisplayMostrar extends AppCompatActivity implements LoaderManager.L
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
-        return null;
+        return new CursorLoader(this, ContentProvider.ENDERECO_DOENTES, BdTabelaDoentes.TODOS_CAMPOS_DOENTE, null, null, BdTabelaDoentes.NOME_DOENTE);
     }
 
     /**
@@ -110,7 +112,7 @@ public class DisplayMostrar extends AppCompatActivity implements LoaderManager.L
      */
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
-
+        adaptadorDoentes.setCursor(data);
     }
 
     /**
@@ -124,6 +126,6 @@ public class DisplayMostrar extends AppCompatActivity implements LoaderManager.L
      */
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
-
+        adaptadorDoentes.setCursor(null);
     }
 }

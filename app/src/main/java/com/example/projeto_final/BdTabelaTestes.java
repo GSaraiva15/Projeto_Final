@@ -18,7 +18,7 @@ public class BdTabelaTestes implements BaseColumns {
 
     public static final String CAMPO_ID_DOENTE_COMMPLETO = BdTabelaDoentes.CAMPO_ID_COMPLETO + " AS " + CAMPO_ID_DOENTE;
 
-    public static final String[] TODOS_CAMPOS_TESTES = {CAMPO_ID_COMPLETO, DATA_TESTE_COMPLETO,RESULTADO_TESTE_COMPLETO,CAMPO_ID_DOENTE_COMPLETO};
+    public static final String[] TODOS_CAMPOS_TESTES = {CAMPO_ID_COMPLETO, DATA_TESTE_COMPLETO,RESULTADO_TESTE_COMPLETO,CAMPO_ID_DOENTE_COMPLETO,CAMPO_ID_DOENTE_COMMPLETO};
     private SQLiteDatabase db;
 
     public BdTabelaTestes(SQLiteDatabase bd){this.db = bd;}

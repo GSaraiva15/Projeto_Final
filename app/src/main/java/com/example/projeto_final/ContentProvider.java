@@ -161,7 +161,7 @@ public class ContentProvider extends android.content.ContentProvider {
             case URI_ID_TESTES:
                 return new BdTabelaTestes(bd).query(projection,BdTabelaTestes._ID + "=?",new String[]{id},null,null,sortOrder);
             default:
-                throw new UnsupportedOperationException("Endereço de query inválido: " +uri.getPath());
+                throw new UnsupportedOperationException("Endereço de query inválido: " + uri.getPath());
         }
     }
 
