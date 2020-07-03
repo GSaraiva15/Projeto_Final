@@ -269,25 +269,22 @@ public class BdTestes {
         db.close();
     }
 
-    private long insereTeste(SQLiteDatabase db, String dataTestes, String Resultado_teste, long id_doente) {
-        BdTabelaDoentes tabelaDoentes = new BdTabelaDoentes(db);
-        BdTabelaConcelhos tabelaConcelhos = new BdTabelaConcelhos(db);
-
-        long id_concelho = tabelaConcelhos.query(new String[]{"_id"}, "nome_concelho_ = ?", new String[]{"Seia"}, null, null, null).getColumnIndex("_id");
-        long idTeste = insereDoente(tabelaDoentes, "Gonçalo", "15/02/2000", "987654321", id_concelho, "Masculino", "Não,", "Recuperado","25/06/2020");
-
-        Testes testes = new Testes();
-        testes.setData_testes(dataTestes);
-        testes.setResultado_testes(Resultado_teste);
-        testes.setIdDoente(id_doente);
-
-        BdTabelaTestes tabelaTestes = new BdTabelaTestes(db);
+    private long insereTeste(BdTabelaTestes tabelaTestes, Testes testes) {
         long id = tabelaTestes.insert(Converte.testesToContentValues(testes));
         assertNotEquals(-1, id);
-
         return id;
     }
 
+    private long insereTeste(BdTabelaTestes tabelaTestes, String dataTestes, String Resultado_teste, long idDoente) {
+
+        Testes testes = new Testes();
+
+        testes.setData_testes(dataTestes);
+        testes.setResultado_testes(Resultado_teste);
+        testes.setIdDoente(idDoente);
+
+        return insereTeste(tabelaTestes, testes);
+    }
     @Test
     public void consegueInserirTeste() {
         Context appContext = getTargetContext();
@@ -295,16 +292,16 @@ public class BdTestes {
         SQLiteDatabase db = openHelper.getWritableDatabase();
         BdTabelaDoentes tabelaDoentes = new BdTabelaDoentes(db);
         BdTabelaTestes tabelaTestes = new BdTabelaTestes(db);
-
+        getTableAsString(db,"Doentes");
         Cursor cursor = tabelaTestes.query(BdTabelaTestes.TODOS_CAMPOS_TESTES, null, null, null, null, null);
         long registos = cursor.getCount();
         cursor.close();
-        Cursor cursor1 = tabelaDoentes.query(new String[]{"_id"}, "Nome =?", new String[]{"Gonçalo"}, null, null, null);
+        Cursor cursor1 = tabelaDoentes.query(new String[]{"_id"}, "nome =?", new String[]{"Gonçalo"}, null, null, null);
         long id_doentes = -1;
         if(cursor1 != null && cursor1.moveToFirst())
             id_doentes = cursor1.getInt(cursor1.getColumnIndex("_id"));
-        insereDoente(tabelaDoentes, "Gonçalo", "15/02/2000", "987654321", id_doentes, "Masculino", "Não,", "Recuperado","25/06/2020");
-        cursor = tabelaDoentes.query(BdTabelaDoentes.TODOS_CAMPOS_DOENTE, null, null, null, null, null);
+        insereTeste(tabelaTestes,"03/07/2020","recuperado",id_doentes);;
+        cursor = tabelaTestes.query(BdTabelaTestes.TODOS_CAMPOS_TESTES, null, null, null, null, null);
         assertEquals(registos + 1, cursor.getCount());
         cursor.close();
         db.close();
@@ -322,11 +319,11 @@ public class BdTestes {
         Cursor cursor = tabelaTestes.query(BdTabelaTestes.TODOS_CAMPOS_TESTES, null, null, null, null, null);
         int registos = cursor.getCount();
         cursor.close();
-        Cursor cursor1 = tabelaDoentes.query(new String[]{"_id"}, "Nome =?", new String[]{"Gonçalo"}, null, null, null);
+        Cursor cursor1 = tabelaDoentes.query(new String[]{"_id"}, "nome =?", new String[]{"Gonçalo"}, null, null, null);
         long id_doente = -1;
         if(cursor1 != null && cursor1.moveToFirst())
             id_doente = cursor1.getInt(cursor1.getColumnIndex("_id"));
-        insereTeste(db, "13/06/2020", "Infetado",id_doente);
+        insereTeste(tabelaTestes, "13/06/2020", "Infetado",id_doente);
         cursor = tabelaTestes.query(BdTabelaTestes.TODOS_CAMPOS_TESTES, null, null, null, null, null);
         assertEquals(registos + 1, cursor.getCount());
         cursor.close();
@@ -342,28 +339,23 @@ public class BdTestes {
         SQLiteDatabase bdTestes = openHelper.getWritableDatabase();
         SQLiteDatabase db = openHelper.getWritableDatabase();
         BdTabelaTestes tabelaTestes = new BdTabelaTestes(db);
+        BdTabelaDoentes tabelaDoentes = new BdTabelaDoentes(db);
 
-        long id_doente = tabelaTestes.query(new String[]{"_id"}, "Nome =?", new String[]{"Gonçalo"}, null, null, null).getColumnIndex("_id");
+        Testes testes = new Testes();
+        testes.setData_testes("04/07/2020");
+        testes.setResultado_testes("infetado");
+        long id_doentes = tabelaDoentes.query(new String[]{"_id"}, "nome = ?", new String[]{"Gonçalo"}, null, null, null).getColumnIndex("_id");
+        testes.setIdDoente(id_doentes);
+        long id = insereTeste(tabelaTestes,testes);
 
-        long idTestes = insereTeste(bdTestes, "13/06/2020", "Infetado",id_doente);
-
-
-        Cursor cursor = tabelaTestes.query(BdTabelaTestes.TODOS_CAMPOS_TESTES, BdTabelaTestes.CAMPO_ID_COMPLETO + "=?", new String[]{String.valueOf(idTestes)}, null, null, null);
-        assertEquals(1, cursor.getCount());
-
-        assertTrue(cursor.moveToNext());
-        Testes testes = Converte.cursorToTestes(cursor);
-        cursor.close();
-
-        idTestes = insereTeste(bdTestes,"03/07/2020","Recuperado",id_doente);
-        //assertEquals("13/06/2020", testes.getData_testes());
-
-
-
-        int registosAfetados = tabelaTestes.update(Converte.testesToContentValues(testes), BdTabelaTestes.CAMPO_ID_COMPLETO + "=?", new String[]{String.valueOf(testes.getId())});
-        assertEquals(1, registosAfetados);
-
+        testes.setData_testes("04/07/2020");
+        testes.setResultado_testes("recuperado" );
+        id_doentes = tabelaDoentes.query(new String[]{"_id"}, "nome = ?", new String[]{"Gonçalo"}, null, null, null).getColumnIndex("_id");
+        testes.setIdDoente(id_doentes);
+        int registosAlterados = tabelaTestes.update(Converte.testesToContentValues(testes),BdTabelaTestes._ID + "=?", new String[]{String.valueOf(id)});
+        assertEquals(1,registosAlterados);
         bdTestes.close();
+
     }
 
     @Test
@@ -373,14 +365,15 @@ public class BdTestes {
         BdDoenteOpenHelper openHelper = new BdDoenteOpenHelper(appContext);
         SQLiteDatabase db = openHelper.getWritableDatabase();
         BdTabelaTestes tabelaTestes = new BdTabelaTestes(db);
-        long id_doente = tabelaTestes.query(new String[]{"_id"}, "Nome =?", new String[]{"Gonçalo"}, null, null, null).getColumnIndex("_id");
+        BdTabelaDoentes tabelaDoentes = new BdTabelaDoentes(db);
 
-        long id = insereTeste(db, "13/06/2020", "Infetado",id_doente);
-
-
-        int registosEliminados = tabelaTestes.delete(BdTabelaTestes._ID + "=?", new String[]{String.valueOf(id)});
-        assertEquals(1, registosEliminados);
-
+        Cursor cursor = tabelaDoentes.query(new String[]{"_id"},"nome =?", new String[]{"Gonçalo"},null,null,null);
+        long id_doentes = -1;
+        if (cursor !=null && cursor.moveToFirst())
+            id_doentes = cursor.getInt(cursor.getColumnIndex("_id"));
+        long id = insereTeste(tabelaTestes,"04/07/2020","recuperado",id_doentes);
+        int registoApagados = tabelaTestes.delete(BdTabelaTestes._ID + "=?", new String[]{String.valueOf(id)});
+        assertEquals(1,registoApagados);
         db.close();
     }
 }

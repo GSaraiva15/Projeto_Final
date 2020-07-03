@@ -28,7 +28,7 @@ public class BdTabelaTestes implements BaseColumns {
     public BdTabelaTestes(SQLiteDatabase bd){this.db = bd;}
     public void criar(){
         db.execSQL("CREATE TABLE " + NOME_TABELA + "(" +
-                _ID+ " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 DATA_TESTE + " TEXT NOT NULL, " +
                 RESULTADO_TESTE + " TEXT NOT NULL, " +
                  CAMPO_ID_DOENTE + " INTEGER NOT NULL," +
@@ -85,9 +85,9 @@ public class BdTabelaTestes implements BaseColumns {
 
         String campos = TextUtils.join(",", columns);
 
-        String sql = "SELECT " + campos;
+        String sql = " SELECT " + campos;
         sql += " FROM " + NOME_TABELA + " INNER JOIN " + BdTabelaDoentes.NOME_TABELA;
-        sql += " ON " + CAMPO_ID_DOENTE + "=" + BdTabelaDoentes.CAMPO_ID_COMPLETO;
+        sql += " ON " + CAMPO_ID_DOENTE_COMPLETO + "=" + BdTabelaDoentes.CAMPO_ID_COMPLETO;
 
         if (selection != null) {
             sql += " WHERE " + selection;
@@ -107,6 +107,14 @@ public class BdTabelaTestes implements BaseColumns {
 
         return db.rawQuery(sql, selectionArgs);
     }
+    /*public Cursor queryMostraNome(String[] columns, String selection,
+                                  String[] selectionArgs,String groupBy,String having,
+                                  String orderBy){
+
+     String sql = "SELECT " + CAMPO_NOME_DOENTE_COMPLETO + " FROM " + NOME_TABELA ;
+
+        return db.rawQuery(sql, selectionArgs);
+    }*/
     /**
      * Convenience method for updating rows in the database.
      *

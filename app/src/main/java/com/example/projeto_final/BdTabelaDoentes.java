@@ -95,7 +95,7 @@ public class BdTabelaDoentes implements BaseColumns {
 
         String campos = TextUtils.join(",", columns);
 
-        String sql = "SELECT " + campos;
+        String sql = " SELECT " + campos;
         sql += " FROM " + NOME_TABELA + " INNER JOIN " + BdTabelaConcelhos.NOME_TABELA;
         sql += " ON " + CAMPO_ID_CONCELHO + "=" + BdTabelaConcelhos.CAMPO_ID_COMPLETO;
 
