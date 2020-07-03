@@ -13,7 +13,7 @@ public class BdTabelaTestes implements BaseColumns {
     public static String DATA_TESTE = "Data_Teste";
     public static String RESULTADO_TESTE = "resultado_teste";
     public static String CAMPO_ID_DOENTE ="id_doente";
-    public static String NOME_DOENTE = "nome";
+    public static String NOME_DOENTE_TESTE = "nome";
 
     public static final String CAMPO_ID_COMPLETO = NOME_TABELA + "." + _ID;
     public static final String DATA_TESTE_COMPLETO = NOME_TABELA + "." + DATA_TESTE;
@@ -21,8 +21,8 @@ public class BdTabelaTestes implements BaseColumns {
     public static String CAMPO_ID_DOENTE_COMPLETO = NOME_TABELA + "." + CAMPO_ID_DOENTE;
 
     public static final String CAMPO_ID_DOENTE_COMMPLETO = BdTabelaDoentes.CAMPO_ID_COMPLETO + " AS " + CAMPO_ID_DOENTE;
-    public static final String CAMPO_NOME_DOENTE = BdTabelaDoentes.NOME_DOENTE + " AS " + NOME_DOENTE;
-    public static final String[] TODOS_CAMPOS_TESTES = {CAMPO_ID_COMPLETO, DATA_TESTE_COMPLETO,RESULTADO_TESTE_COMPLETO,CAMPO_ID_DOENTE_COMPLETO,CAMPO_ID_DOENTE_COMMPLETO,CAMPO_NOME_DOENTE};
+    public static final String CAMPO_NOME_DOENTE_COMPLETO = BdTabelaDoentes.NOME_DOENTE + " AS " + NOME_DOENTE_TESTE;
+    public static final String[] TODOS_CAMPOS_TESTES = {CAMPO_ID_COMPLETO, DATA_TESTE_COMPLETO,RESULTADO_TESTE_COMPLETO,CAMPO_ID_DOENTE_COMPLETO,CAMPO_ID_DOENTE_COMMPLETO,CAMPO_NOME_DOENTE_COMPLETO};
     private SQLiteDatabase db;
 
     public BdTabelaTestes(SQLiteDatabase bd){this.db = bd;}
@@ -79,15 +79,15 @@ public class BdTabelaTestes implements BaseColumns {
     public Cursor query (String[] columns, String selection,
                          String[] selectionArgs,String groupBy,String having,
                          String orderBy){
-        if (!Arrays.asList(columns).contains(CAMPO_NOME_DOENTE)) {
+        if (!Arrays.asList(columns).contains(CAMPO_NOME_DOENTE_COMPLETO)) {
         return db.query(NOME_TABELA, columns, selection, selectionArgs, groupBy, having, orderBy);
     }
 
         String campos = TextUtils.join(",", columns);
 
         String sql = "SELECT " + campos;
-        sql += " FROM " + NOME_TABELA + " INNER JOIN " + BdTabelaConcelhos.NOME_TABELA;
-        sql += " ON " + CAMPO_ID_DOENTE + "=" + BdTabelaConcelhos.CAMPO_ID_COMPLETO;
+        sql += " FROM " + NOME_TABELA + " INNER JOIN " + BdTabelaDoentes.NOME_TABELA;
+        sql += " ON " + CAMPO_ID_DOENTE + "=" + BdTabelaDoentes.CAMPO_ID_COMPLETO;
 
         if (selection != null) {
             sql += " WHERE " + selection;

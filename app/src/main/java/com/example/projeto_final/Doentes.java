@@ -8,7 +8,7 @@ public class Doentes {
     private String nome_doente;//
     private String nascimento_doente;//
     private String telemovel_doente;
-    private Integer id_concelho;//
+    private long id_concelho;//
     private String sexo_doente;//
     private String cronico_doente;//
     private String estado_doente;////
@@ -54,11 +54,11 @@ public class Doentes {
         this.telemovel_doente = telemovel_doente;
     }
 
-    public Integer getId_concelho() {
+    public long getId_concelho() {
         return id_concelho;
     }
 
-    public void setId_concelho(Integer id_concelho) {
+    public void setId_concelho(long id_concelho) {
         this.id_concelho = id_concelho;
     }
 
