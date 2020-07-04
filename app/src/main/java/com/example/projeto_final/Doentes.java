@@ -101,7 +101,7 @@ public class Doentes {
         return valores;
     }
 
-    public static Doentes fromCursor(Cursor cursor) {
+    public static Doentes fromCursorDoentes(Cursor cursor) {
 
         long id = cursor.getLong(
                 cursor.getColumnIndex(BdTabelaDoentes._ID)
