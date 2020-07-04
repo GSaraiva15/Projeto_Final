@@ -67,8 +67,6 @@ public class BdDoenteOpenHelper extends SQLiteOpenHelper {
         doentes.setData_estado("25/06/2020");
 
         tabelaDoentes.insert(Converte.doenteToContentValues(doentes));
-
-
     }
     private void inserirConcelho(BdTabelaConcelhos tabelaConcelhos) {
         Concelhos concelhos = new Concelhos();
