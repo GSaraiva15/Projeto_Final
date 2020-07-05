@@ -10,21 +10,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
-
 public class AdaptadorDoentes extends RecyclerView.Adapter<AdaptadorDoentes.ViewHolderDoentes> {
     private final Context context;
     private Cursor cursor = null;
-
-    public AdaptadorDoentes(Context context) {
-        this.context = context;
-    }
 
     public void setCursor(Cursor cursor) {
         if (cursor != this.cursor) {
             this.cursor = cursor;
             notifyDataSetChanged();
         }
+    }
+    public AdaptadorDoentes(Context context) {
+        this.context = context;
     }
 
     @NonNull
@@ -50,14 +47,17 @@ public class AdaptadorDoentes extends RecyclerView.Adapter<AdaptadorDoentes.View
         return cursor.getCount();
     }
 
-    public Doentes getPacienteSelecionado() {
-        if (viewHolderPacienteSelecionado == null) return null;
-        return viewHolderPacienteSelecionado.doentes;
+
+    private ViewHolderDoentes viewHolderDoenteSelecionado = null;
+
+    public Doentes getDoenteSelecionado() {
+        if (viewHolderDoenteSelecionado == null) return null;
+        return viewHolderDoenteSelecionado.doentes;
     }
 
-    private AdaptadorDoentes.ViewHolderDoentes viewHolderPacienteSelecionado = null;
 
-    public class ViewHolderDoentes extends RecyclerView.ViewHolder{
+
+    public class ViewHolderDoentes extends RecyclerView.ViewHolder implements View.OnClickListener {
         private Doentes doentes = null;
 
         private final TextView textViewNomeDoDoente;
@@ -70,19 +70,18 @@ public class AdaptadorDoentes extends RecyclerView.Adapter<AdaptadorDoentes.View
         private final TextView textViewTelefoneDoDoente;
 
 
-
         public ViewHolderDoentes(@NonNull View itemView) {
             super(itemView);
 
-            textViewNomeDoDoente = (TextView)itemView.findViewById(R.id.textViewNomeDoDoente);
-            textViewConcelhoDoDoente = (TextView)itemView.findViewById(R.id.textViewConcelhoDoDoente);
-            textViewEstadoDoDoente = (TextView)itemView.findViewById(R.id.textViewEstadoDoDoente);
-            textViewDataDeNascimentoDoDoente = (TextView)itemView.findViewById(R.id.textViewDataDeNascimentoDoDoente);
-            textViewSexoDoDoente = (TextView)itemView.findViewById(R.id.textViewSexoDoDoente);
-            textViewDataEstadoAtualDoDoente = (TextView)itemView.findViewById(R.id.textViewDataEstadoAtualDoDoente);
-            textViewCronicoDoDoente = (TextView)itemView.findViewById(R.id.textViewCronicoDoDoente);
-            textViewTelefoneDoDoente = (TextView)itemView.findViewById(R.id.textViewTelefoneDoDoente);
-
+            textViewNomeDoDoente = (TextView) itemView.findViewById(R.id.textViewNomeDoDoente);
+            textViewConcelhoDoDoente = (TextView) itemView.findViewById(R.id.textViewConcelhoDoDoente);
+            textViewEstadoDoDoente = (TextView) itemView.findViewById(R.id.textViewEstadoDoDoente);
+            textViewDataDeNascimentoDoDoente = (TextView) itemView.findViewById(R.id.textViewDataDeNascimentoDoDoente);
+            textViewSexoDoDoente = (TextView) itemView.findViewById(R.id.textViewSexoDoDoente);
+            textViewDataEstadoAtualDoDoente = (TextView) itemView.findViewById(R.id.textViewDataEstadoAtualDoDoente);
+            textViewCronicoDoDoente = (TextView) itemView.findViewById(R.id.textViewCronicoDoDoente);
+            textViewTelefoneDoDoente = (TextView) itemView.findViewById(R.id.textViewTelefoneDoDoente);
+            itemView.setOnClickListener(this);
         }
 
         public void setDoentes(Doentes doentes) {
@@ -95,6 +94,26 @@ public class AdaptadorDoentes extends RecyclerView.Adapter<AdaptadorDoentes.View
             textViewDataEstadoAtualDoDoente.setText(String.valueOf(doentes.getData_estado()));
             textViewCronicoDoDoente.setText(String.valueOf(doentes.getCronico_doente()));
             textViewTelefoneDoDoente.setText(String.valueOf(doentes.getTelemovel_doente()));
+        }
+
+        @Override
+        public void onClick(View v) {
+            if (viewHolderDoenteSelecionado == this) {
+                return;
+            }
+            if (viewHolderDoenteSelecionado != null) {
+                viewHolderDoenteSelecionado.desSeleciona();
+            }
+            viewHolderDoenteSelecionado = this;
+            seleciona();
+            DisplayMostrar displayMostrar = (DisplayMostrar) AdaptadorDoentes.this.context;
+
+        }
+        private void desSeleciona() {
+            itemView.setBackgroundResource(android.R.color.white);
+        }
+        private void seleciona(){
+            itemView.setBackgroundResource(R.color.colorAccent);
         }
     }
 }

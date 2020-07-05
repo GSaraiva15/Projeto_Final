@@ -46,7 +46,7 @@ public class BdDoenteOpenHelper extends SQLiteOpenHelper {
 
         inserirConcelho(tabelaConcelhos);
 
-        if( DESENVOLVIMENTO){
+        if(DESENVOLVIMENTO){
             seedData(db);
         }
 
@@ -55,12 +55,19 @@ public class BdDoenteOpenHelper extends SQLiteOpenHelper {
         BdTabelaDoentes tabelaDoentes = new BdTabelaDoentes(db);
         BdTabelaConcelhos tabelaConcelhos   = new BdTabelaConcelhos(db);
 
+        Concelhos concelhos = new Concelhos();
+        concelhos.setNome_concelho("Figueira da Foz");
+        concelhos.setNr_infetados(1);
+        concelhos.setNr_recuperados(1);
+        concelhos.setNr_obitos(0);
+        concelhos.setNr_Habitante(123456879);
+        long idFigueria = tabelaConcelhos.insert(Converte.concelhosToContentValues(concelhos));
+
         Doentes doentes = new Doentes();
         doentes.setNome_doente("Gonçalo");
         doentes.setNascimento_doente("15/02/2000");
         doentes.setTelemovel_doente("987654321");
-        Integer id_conselho = tabelaConcelhos.query(new String[]{"_id"}, "nome_concelho_ = ?", new String[]{"Seia"}, null, null, null).getColumnIndex("_id");
-        doentes.setId_concelho(id_conselho);
+        doentes.setId_concelho(idFigueria);
         doentes.setSexo_doente("Masculino");
         doentes.setCronico_doente("Não");
         doentes.setEstado_doente("Recuperado");

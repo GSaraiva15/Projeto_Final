@@ -234,7 +234,7 @@ public class ContentProvider extends android.content.ContentProvider {
               id = (new BdTabelaTestes(bd).insert(values));
               break;
           default:
-              throw new UnsupportedOperationException("Endereço inser inválido: " + uri.getPath());
+              throw new UnsupportedOperationException("Endereço insert inválido: " + uri.getPath());
       }
       if(id == -1){
           throw new SQLException("Não foi possivel inserir o registo: " + uri.getPath());

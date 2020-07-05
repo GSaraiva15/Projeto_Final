@@ -40,9 +40,7 @@ public class DisplayMostrar extends AppCompatActivity implements LoaderManager.L
 
         LoaderManager.getInstance(this).initLoader(ID_CURSOR_LOADER_DOENTE, null, this);
 
-
-    }
-    public void inserirDoente (View view){
+    } public void inserirDoente (View view){
 
         Intent intentInserirDoente = new Intent(this,DisplayInserirDoentes.class);
         startActivity(intentInserirDoente);
@@ -53,7 +51,11 @@ public class DisplayMostrar extends AppCompatActivity implements LoaderManager.L
         startActivity(intentInserirTestes);
     }
 
-
+    @Override
+    protected void onResume(){
+        getSupportLoaderManager().restartLoader(ID_CURSOR_LOADER_DOENTE,null,this);
+        super.onResume();
+    }
     /**
      * Instantiate and return a new Loader for the given ID.
      *
@@ -128,4 +130,5 @@ public class DisplayMostrar extends AppCompatActivity implements LoaderManager.L
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
         adaptadorDoentes.setCursor(null);
     }
+
 }
